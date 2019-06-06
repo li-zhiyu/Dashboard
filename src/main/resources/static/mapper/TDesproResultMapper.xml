@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TDesproResultMapper">
+
+    <delete id="delete" parameterType="java.util.Map">
+        delete from t_despro_result
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_despro_result (
+            ID, 
+            PROJECTID, 
+            BUILD_NO, 
+            STAGEID, 
+            MAJORID, 
+            RESULTNM, 
+            VERSION, 
+            RESULTTYPE, 
+            FILESERVER, 
+            CREATETIME, 
+            CREATER, 
+            LASTMODIFYTIME, 
+            LASTMODIFIER, 
+            FILESIZE, 
+            SIZEUNIT, 
+            STATE, 
+            MEMO, 
+            BBBS, 
+            WJBS, 
+            NODEID, 
+            LOCALPATH, 
+            FILEMD5, 
+            UPLOADSTATUS, 
+            CEPHUPLOADID, 
+            FOLDERPATH, 
+            TOTALBLOCK, 
+            PROJECT_ID)
+        values (
+            #{id,jdbcType=VARCHAR}, 
+            #{projectid,jdbcType=VARCHAR}, 
+            #{buildNo,jdbcType=VARCHAR}, 
+            #{stageid,jdbcType=VARCHAR}, 
+            #{majorid,jdbcType=VARCHAR}, 
+            #{resultnm,jdbcType=VARCHAR}, 
+            #{version,jdbcType=VARCHAR}, 
+            #{resulttype,jdbcType=VARCHAR}, 
+            #{fileserver,jdbcType=VARCHAR}, 
+            #{createtime,jdbcType=TIMESTAMP}, 
+            #{creater,jdbcType=VARCHAR}, 
+            #{lastmodifytime,jdbcType=TIMESTAMP}, 
+            #{lastmodifier,jdbcType=VARCHAR}, 
+            #{filesize,jdbcType=DECIMAL}, 
+            #{sizeunit,jdbcType=VARCHAR}, 
+            #{state,jdbcType=VARCHAR}, 
+            #{memo,jdbcType=VARCHAR}, 
+            #{bbbs,jdbcType=VARCHAR}, 
+            #{wjbs,jdbcType=VARCHAR}, 
+            #{nodeid,jdbcType=VARCHAR}, 
+            #{localpath,jdbcType=VARCHAR}, 
+            #{filemd5,jdbcType=VARCHAR}, 
+            #{uploadstatus,jdbcType=VARCHAR}, 
+            #{cephuploadid,jdbcType=VARCHAR}, 
+            #{folderpath,jdbcType=VARCHAR}, 
+            #{totalblock,jdbcType=INTEGER}, 
+            #{projectId,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_despro_result
+        <set>
+            <if test="projectid != null">
+                PROJECTID = #{projectid,jdbcType=VARCHAR},
+            </if>
+            <if test="buildNo != null">
+                BUILD_NO = #{buildNo,jdbcType=VARCHAR},
+            </if>
+            <if test="stageid != null">
+                STAGEID = #{stageid,jdbcType=VARCHAR},
+            </if>
+            <if test="majorid != null">
+                MAJORID = #{majorid,jdbcType=VARCHAR},
+            </if>
+            <if test="resultnm != null">
+                RESULTNM = #{resultnm,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null">
+                VERSION = #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="resulttype != null">
+                RESULTTYPE = #{resulttype,jdbcType=VARCHAR},
+            </if>
+            <if test="fileserver != null">
+                FILESERVER = #{fileserver,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null">
+                CREATER = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="lastmodifytime != null">
+                LASTMODIFYTIME = #{lastmodifytime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastmodifier != null">
+                LASTMODIFIER = #{lastmodifier,jdbcType=VARCHAR},
+            </if>
+            <if test="filesize != null">
+                FILESIZE = #{filesize,jdbcType=DECIMAL},
+            </if>
+            <if test="sizeunit != null">
+                SIZEUNIT = #{sizeunit,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                STATE = #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="bbbs != null">
+                BBBS = #{bbbs,jdbcType=VARCHAR},
+            </if>
+            <if test="wjbs != null">
+                WJBS = #{wjbs,jdbcType=VARCHAR},
+            </if>
+            <if test="nodeid != null">
+                NODEID = #{nodeid,jdbcType=VARCHAR},
+            </if>
+            <if test="localpath != null">
+                LOCALPATH = #{localpath,jdbcType=VARCHAR},
+            </if>
+            <if test="filemd5 != null">
+                FILEMD5 = #{filemd5,jdbcType=VARCHAR},
+            </if>
+            <if test="uploadstatus != null">
+                UPLOADSTATUS = #{uploadstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="cephuploadid != null">
+                CEPHUPLOADID = #{cephuploadid,jdbcType=VARCHAR},
+            </if>
+            <if test="folderpath != null">
+                FOLDERPATH = #{folderpath,jdbcType=VARCHAR},
+            </if>
+            <if test="totalblock != null">
+                TOTALBLOCK = #{totalblock,jdbcType=INTEGER},
+            </if>
+            <if test="projectId != null">
+                PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            PROJECTID, 
+            BUILD_NO, 
+            STAGEID, 
+            MAJORID, 
+            RESULTNM, 
+            VERSION, 
+            RESULTTYPE, 
+            FILESERVER, 
+            CREATETIME, 
+            CREATER, 
+            LASTMODIFYTIME, 
+            LASTMODIFIER, 
+            FILESIZE, 
+            SIZEUNIT, 
+            STATE, 
+            MEMO, 
+            BBBS, 
+            WJBS, 
+            NODEID, 
+            LOCALPATH, 
+            FILEMD5, 
+            UPLOADSTATUS, 
+            CEPHUPLOADID, 
+            FOLDERPATH, 
+            TOTALBLOCK, 
+            PROJECT_ID
+            
+        from t_despro_result
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            PROJECTID, 
+            BUILD_NO, 
+            STAGEID, 
+            MAJORID, 
+            RESULTNM, 
+            VERSION, 
+            RESULTTYPE, 
+            FILESERVER, 
+            CREATETIME, 
+            CREATER, 
+            LASTMODIFYTIME, 
+            LASTMODIFIER, 
+            FILESIZE, 
+            SIZEUNIT, 
+            STATE, 
+            MEMO, 
+            BBBS, 
+            WJBS, 
+            NODEID, 
+            LOCALPATH, 
+            FILEMD5, 
+            UPLOADSTATUS, 
+            CEPHUPLOADID, 
+            FOLDERPATH, 
+            TOTALBLOCK, 
+            PROJECT_ID
+            
+        from t_despro_result
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != null and id != ''">
+                AND ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="projectid != null and projectid != ''">
+                AND PROJECTID = #{projectid,jdbcType=VARCHAR}
+            </if>
+            <if test="buildNo != null and buildNo != ''">
+                AND BUILD_NO = #{buildNo,jdbcType=VARCHAR}
+            </if>
+            <if test="stageid != null and stageid != ''">
+                AND STAGEID = #{stageid,jdbcType=VARCHAR}
+            </if>
+            <if test="majorid != null and majorid != ''">
+                AND MAJORID = #{majorid,jdbcType=VARCHAR}
+            </if>
+            <if test="resultnm != null and resultnm != ''">
+                AND RESULTNM = #{resultnm,jdbcType=VARCHAR}
+            </if>
+            <if test="version != null and version != ''">
+                AND VERSION = #{version,jdbcType=VARCHAR}
+            </if>
+            <if test="resulttype != null and resulttype != ''">
+                AND RESULTTYPE = #{resulttype,jdbcType=VARCHAR}
+            </if>
+            <if test="fileserver != null and fileserver != ''">
+                AND FILESERVER = #{fileserver,jdbcType=VARCHAR}
+            </if>
+            <if test="createtime != null and createtime != ''">
+                AND CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creater != null and creater != ''">
+                AND CREATER = #{creater,jdbcType=VARCHAR}
+            </if>
+            <if test="lastmodifytime != null and lastmodifytime != ''">
+                AND LASTMODIFYTIME = #{lastmodifytime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="lastmodifier != null and lastmodifier != ''">
+                AND LASTMODIFIER = #{lastmodifier,jdbcType=VARCHAR}
+            </if>
+            <if test="filesize != null and filesize != ''">
+                AND FILESIZE = #{filesize,jdbcType=DECIMAL}
+            </if>
+            <if test="sizeunit != null and sizeunit != ''">
+                AND SIZEUNIT = #{sizeunit,jdbcType=VARCHAR}
+            </if>
+            <if test="state != null and state != ''">
+                AND STATE = #{state,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null and memo != ''">
+                AND MEMO = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="bbbs != null and bbbs != ''">
+                AND BBBS = #{bbbs,jdbcType=VARCHAR}
+            </if>
+            <if test="wjbs != null and wjbs != ''">
+                AND WJBS = #{wjbs,jdbcType=VARCHAR}
+            </if>
+            <if test="nodeid != null and nodeid != ''">
+                AND NODEID = #{nodeid,jdbcType=VARCHAR}
+            </if>
+            <if test="localpath != null and localpath != ''">
+                AND LOCALPATH = #{localpath,jdbcType=VARCHAR}
+            </if>
+            <if test="filemd5 != null and filemd5 != ''">
+                AND FILEMD5 = #{filemd5,jdbcType=VARCHAR}
+            </if>
+            <if test="uploadstatus != null and uploadstatus != ''">
+                AND UPLOADSTATUS = #{uploadstatus,jdbcType=VARCHAR}
+            </if>
+            <if test="cephuploadid != null and cephuploadid != ''">
+                AND CEPHUPLOADID = #{cephuploadid,jdbcType=VARCHAR}
+            </if>
+            <if test="folderpath != null and folderpath != ''">
+                AND FOLDERPATH = #{folderpath,jdbcType=VARCHAR}
+            </if>
+            <if test="totalblock != null and totalblock != ''">
+                AND TOTALBLOCK = #{totalblock,jdbcType=INTEGER}
+            </if>
+            <if test="projectId != null and projectId != ''">
+                AND PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+    
+    <select id="querySumByMonth" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT  SUBSTR(CREATETIME , 1 , 7) MONTH,COUNT(*) SUM 
+    FROM `t_despro_result`
+    GROUP BY MONTH
+    ORDER BY MONTH desc
+    LIMIT 12;
+    </select>
+</mapper>

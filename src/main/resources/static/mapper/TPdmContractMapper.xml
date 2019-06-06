@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmContractMapper">
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_pdm_contract (
+            ID, 
+            CONTRACT_NO, 
+            PROJECT_ID, 
+            PROJECT_NM, 
+            CONTRACT_TYPE, 
+            FIRST_PARTY, 
+            SECOND_PARTY, 
+            FIRST_PARTY_ID, 
+            SECOND_PARTY_ID, 
+            EXPECTED_COST, 
+            MANAGER, 
+            EXE_MANAGER, 
+            MANAGER_ID, 
+            MANAGER_POST, 
+            MANAGER_TELNO, 
+            ARB_UNIT, 
+            A_CONTRACT_NUM, 
+            B_CONTRACT_NUM, 
+            A_COMP_HOTLINE, 
+            B_COMP_HOTLINE, 
+            A_COMP_EMAIL, 
+            B_COMP_EMAIL, 
+            MEMO, 
+            DRAFT_DATE, 
+            SUB_DEP, 
+            SUB_PERSON, 
+            ASCRIPTION_SUBJECT, 
+            ASCRIPTION_DEP, 
+            CONTRACT_NM, 
+            CONTRACT_PP, 
+            TEMP_TYPE, 
+            CMP_TYPE, 
+            SUPPLIER_NM, 
+            CUSTOMER_NM, 
+            SUPPLIER_ID, 
+            CUSTOMER_ID, 
+            CURRENCY, 
+            ENCLOSURE1, 
+            ENCLOSURE2, 
+            ENCLOSURE3, 
+            ENCLOSURE4, 
+            ENCLOSURE5, 
+            SIGNING_DATE, 
+            PAYMENT, 
+            PAYPROCESS, 
+            PRODUCTIVE, 
+            PROPROCESS, 
+            INVOICEVALUE, 
+            COSTAMOUNT, 
+            INVPROCESS)
+        values (
+            #{id,jdbcType=VARCHAR}, 
+            #{contractNo,jdbcType=VARCHAR}, 
+            #{projectId,jdbcType=VARCHAR}, 
+            #{projectNm,jdbcType=VARCHAR}, 
+            #{contractType,jdbcType=VARCHAR}, 
+            #{firstParty,jdbcType=VARCHAR}, 
+            #{secondParty,jdbcType=VARCHAR}, 
+            #{firstPartyId,jdbcType=VARCHAR}, 
+            #{secondPartyId,jdbcType=VARCHAR}, 
+            #{expectedCost,jdbcType=DECIMAL}, 
+            #{manager,jdbcType=VARCHAR}, 
+            #{exeManager,jdbcType=VARCHAR}, 
+            #{managerId,jdbcType=VARCHAR}, 
+            #{managerPost,jdbcType=VARCHAR}, 
+            #{managerTelno,jdbcType=VARCHAR}, 
+            #{arbUnit,jdbcType=VARCHAR}, 
+            #{aContractNum,jdbcType=INTEGER}, 
+            #{bContractNum,jdbcType=INTEGER}, 
+            #{aCompHotline,jdbcType=VARCHAR}, 
+            #{bCompHotline,jdbcType=VARCHAR}, 
+            #{aCompEmail,jdbcType=VARCHAR}, 
+            #{bCompEmail,jdbcType=VARCHAR}, 
+            #{memo,jdbcType=VARCHAR}, 
+            #{draftDate,jdbcType=DATE}, 
+            #{subDep,jdbcType=VARCHAR}, 
+            #{subPerson,jdbcType=VARCHAR}, 
+            #{ascriptionSubject,jdbcType=VARCHAR}, 
+            #{ascriptionDep,jdbcType=VARCHAR}, 
+            #{contractNm,jdbcType=VARCHAR}, 
+            #{contractPp,jdbcType=VARCHAR}, 
+            #{tempType,jdbcType=VARCHAR}, 
+            #{cmpType,jdbcType=VARCHAR}, 
+            #{supplierNm,jdbcType=VARCHAR}, 
+            #{customerNm,jdbcType=VARCHAR}, 
+            #{supplierId,jdbcType=VARCHAR}, 
+            #{customerId,jdbcType=VARCHAR}, 
+            #{currency,jdbcType=VARCHAR}, 
+            #{enclosure1,jdbcType=VARCHAR}, 
+            #{enclosure2,jdbcType=VARCHAR}, 
+            #{enclosure3,jdbcType=VARCHAR}, 
+            #{enclosure4,jdbcType=VARCHAR}, 
+            #{enclosure5,jdbcType=VARCHAR}, 
+            #{signingDate,jdbcType=DATE}, 
+            #{payment,jdbcType=DECIMAL}, 
+            #{payprocess,jdbcType=DECIMAL}, 
+            #{productive,jdbcType=DECIMAL}, 
+            #{proprocess,jdbcType=DECIMAL}, 
+            #{invoicevalue,jdbcType=DECIMAL}, 
+            #{costamount,jdbcType=DECIMAL}, 
+            #{invprocess,jdbcType=DECIMAL})
+    </insert>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            CONTRACT_NO, 
+            PROJECT_ID, 
+            PROJECT_NM, 
+            CONTRACT_TYPE, 
+            FIRST_PARTY, 
+            SECOND_PARTY, 
+            FIRST_PARTY_ID, 
+            SECOND_PARTY_ID, 
+            EXPECTED_COST, 
+            MANAGER, 
+            EXE_MANAGER, 
+            MANAGER_ID, 
+            MANAGER_POST, 
+            MANAGER_TELNO, 
+            ARB_UNIT, 
+            A_CONTRACT_NUM, 
+            B_CONTRACT_NUM, 
+            A_COMP_HOTLINE, 
+            B_COMP_HOTLINE, 
+            A_COMP_EMAIL, 
+            B_COMP_EMAIL, 
+            MEMO, 
+            DRAFT_DATE, 
+            SUB_DEP, 
+            SUB_PERSON, 
+            ASCRIPTION_SUBJECT, 
+            ASCRIPTION_DEP, 
+            CONTRACT_NM, 
+            CONTRACT_PP, 
+            TEMP_TYPE, 
+            CMP_TYPE, 
+            SUPPLIER_NM, 
+            CUSTOMER_NM, 
+            SUPPLIER_ID, 
+            CUSTOMER_ID, 
+            CURRENCY, 
+            ENCLOSURE1, 
+            ENCLOSURE2, 
+            ENCLOSURE3, 
+            ENCLOSURE4, 
+            ENCLOSURE5, 
+            DATE_FORMAT(SIGNING_DATE,'%Y-%m-%d') SIGNING_DATE, 
+            PAYMENT, 
+            PAYPROCESS, 
+            PRODUCTIVE, 
+            PROPROCESS, 
+            INVOICEVALUE, 
+            COSTAMOUNT, 
+            INVPROCESS
+            
+        from t_pdm_contract
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != null and id != ''">
+                AND ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                AND CONTRACT_NO = #{contractNo,jdbcType=VARCHAR}
+            </if>
+            <if test="projectId != null and projectId != ''">
+                AND PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+            </if>
+            <if test="projectNm != null and projectNm != ''">
+                AND PROJECT_NM = #{projectNm,jdbcType=VARCHAR}
+            </if>
+            <if test="contractType != null and contractType != ''">
+                AND CONTRACT_TYPE = #{contractType,jdbcType=VARCHAR}
+            </if>
+            <if test="firstParty != null and firstParty != ''">
+                AND FIRST_PARTY = #{firstParty,jdbcType=VARCHAR}
+            </if>
+            <if test="secondParty != null and secondParty != ''">
+                AND SECOND_PARTY = #{secondParty,jdbcType=VARCHAR}
+            </if>
+            <if test="firstPartyId != null and firstPartyId != ''">
+                AND FIRST_PARTY_ID = #{firstPartyId,jdbcType=VARCHAR}
+            </if>
+            <if test="secondPartyId != null and secondPartyId != ''">
+                AND SECOND_PARTY_ID = #{secondPartyId,jdbcType=VARCHAR}
+            </if>
+            <if test="expectedCost != null and expectedCost != ''">
+                AND EXPECTED_COST = #{expectedCost,jdbcType=DECIMAL}
+            </if>
+            <if test="manager != null and manager != ''">
+                AND MANAGER = #{manager,jdbcType=VARCHAR}
+            </if>
+            <if test="exeManager != null and exeManager != ''">
+                AND EXE_MANAGER = #{exeManager,jdbcType=VARCHAR}
+            </if>
+            <if test="managerId != null and managerId != ''">
+                AND MANAGER_ID = #{managerId,jdbcType=VARCHAR}
+            </if>
+            <if test="managerPost != null and managerPost != ''">
+                AND MANAGER_POST = #{managerPost,jdbcType=VARCHAR}
+            </if>
+            <if test="managerTelno != null and managerTelno != ''">
+                AND MANAGER_TELNO = #{managerTelno,jdbcType=VARCHAR}
+            </if>
+            <if test="arbUnit != null and arbUnit != ''">
+                AND ARB_UNIT = #{arbUnit,jdbcType=VARCHAR}
+            </if>
+            <if test="aContractNum != null and aContractNum != ''">
+                AND A_CONTRACT_NUM = #{aContractNum,jdbcType=INTEGER}
+            </if>
+            <if test="bContractNum != null and bContractNum != ''">
+                AND B_CONTRACT_NUM = #{bContractNum,jdbcType=INTEGER}
+            </if>
+            <if test="aCompHotline != null and aCompHotline != ''">
+                AND A_COMP_HOTLINE = #{aCompHotline,jdbcType=VARCHAR}
+            </if>
+            <if test="bCompHotline != null and bCompHotline != ''">
+                AND B_COMP_HOTLINE = #{bCompHotline,jdbcType=VARCHAR}
+            </if>
+            <if test="aCompEmail != null and aCompEmail != ''">
+                AND A_COMP_EMAIL = #{aCompEmail,jdbcType=VARCHAR}
+            </if>
+            <if test="bCompEmail != null and bCompEmail != ''">
+                AND B_COMP_EMAIL = #{bCompEmail,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null and memo != ''">
+                AND MEMO = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="draftDate != null and draftDate != ''">
+                AND DRAFT_DATE = #{draftDate,jdbcType=DATE}
+            </if>
+            <if test="subDep != null and subDep != ''">
+                AND SUB_DEP = #{subDep,jdbcType=VARCHAR}
+            </if>
+            <if test="subPerson != null and subPerson != ''">
+                AND SUB_PERSON = #{subPerson,jdbcType=VARCHAR}
+            </if>
+            <if test="ascriptionSubject != null and ascriptionSubject != ''">
+                AND ASCRIPTION_SUBJECT = #{ascriptionSubject,jdbcType=VARCHAR}
+            </if>
+            <if test="ascriptionDep != null and ascriptionDep != ''">
+                AND ASCRIPTION_DEP = #{ascriptionDep,jdbcType=VARCHAR}
+            </if>
+            <if test="contractNm != null and contractNm != ''">
+                AND CONTRACT_NM = #{contractNm,jdbcType=VARCHAR}
+            </if>
+            <if test="contractPp != null and contractPp != ''">
+                AND CONTRACT_PP = #{contractPp,jdbcType=VARCHAR}
+            </if>
+            <if test="tempType != null and tempType != ''">
+                AND TEMP_TYPE = #{tempType,jdbcType=VARCHAR}
+            </if>
+            <if test="cmpType != null and cmpType != ''">
+                AND CMP_TYPE = #{cmpType,jdbcType=VARCHAR}
+            </if>
+            <if test="supplierNm != null and supplierNm != ''">
+                AND SUPPLIER_NM = #{supplierNm,jdbcType=VARCHAR}
+            </if>
+            <if test="customerNm != null and customerNm != ''">
+                AND CUSTOMER_NM = #{customerNm,jdbcType=VARCHAR}
+            </if>
+            <if test="supplierId != null and supplierId != ''">
+                AND SUPPLIER_ID = #{supplierId,jdbcType=VARCHAR}
+            </if>
+            <if test="customerId != null and customerId != ''">
+                AND CUSTOMER_ID = #{customerId,jdbcType=VARCHAR}
+            </if>
+            <if test="currency != null and currency != ''">
+                AND CURRENCY = #{currency,jdbcType=VARCHAR}
+            </if>
+            <if test="enclosure1 != null and enclosure1 != ''">
+                AND ENCLOSURE1 = #{enclosure1,jdbcType=VARCHAR}
+            </if>
+            <if test="enclosure2 != null and enclosure2 != ''">
+                AND ENCLOSURE2 = #{enclosure2,jdbcType=VARCHAR}
+            </if>
+            <if test="enclosure3 != null and enclosure3 != ''">
+                AND ENCLOSURE3 = #{enclosure3,jdbcType=VARCHAR}
+            </if>
+            <if test="enclosure4 != null and enclosure4 != ''">
+                AND ENCLOSURE4 = #{enclosure4,jdbcType=VARCHAR}
+            </if>
+            <if test="enclosure5 != null and enclosure5 != ''">
+                AND ENCLOSURE5 = #{enclosure5,jdbcType=VARCHAR}
+            </if>
+            <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+                AND SIGNING_DATE Between  #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+            </if>  
+            <if test="payment != null and payment != ''">
+                AND PAYMENT = #{payment,jdbcType=DECIMAL}
+            </if>
+            <if test="payprocess != null and payprocess != ''">
+                AND PAYPROCESS = #{payprocess,jdbcType=DECIMAL}
+            </if>
+            <if test="productive != null and productive != ''">
+                AND PRODUCTIVE = #{productive,jdbcType=DECIMAL}
+            </if>
+            <if test="proprocess != null and proprocess != ''">
+                AND PROPROCESS = #{proprocess,jdbcType=DECIMAL}
+            </if>
+            <if test="invoicevalue != null and invoicevalue != ''">
+                AND INVOICEVALUE = #{invoicevalue,jdbcType=DECIMAL}
+            </if>
+            <if test="costamount != null and costamount != ''">
+                AND COSTAMOUNT = #{costamount,jdbcType=DECIMAL}
+            </if>
+            <if test="invprocess != null and invprocess != ''">
+                AND INVPROCESS = #{invprocess,jdbcType=DECIMAL}
+            </if>
+        </trim>
+    </select>
+    
+       <select id="queryExpectedCost" parameterType="java.util.Map" resultType="java.util.Map">
+        select SUM(EXPECTED_COST) as  EXPECTED_COST_SUM          
+        from t_pdm_contract
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+                AND SIGNING_DATE Between  #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+            </if>           
+        </trim>
+    </select>
+</mapper>

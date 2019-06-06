@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmContractTargetMapper">
+
+    <delete id="delete" parameterType="java.util.Map">
+        delete from t_pdm_contract_target
+        where CTID = #{ctid,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_pdm_contract_target (
+            CTID, 
+            TGNAME, 
+            TGDATE, 
+            TGVALUE, 
+            TGTYPE, 
+            TGUNIT)
+        values (
+            #{ctid,jdbcType=VARCHAR}, 
+            #{tgname,jdbcType=VARCHAR}, 
+            #{tgdate,jdbcType=DATE}, 
+            #{tgvalue,jdbcType=DECIMAL}, 
+            #{tgtype,jdbcType=VARCHAR}, 
+            #{tgunit,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_pdm_contract_target
+        <set>
+            <if test="tgname != null">
+                TGNAME = #{tgname,jdbcType=VARCHAR},
+            </if>
+            <if test="tgdate != null">
+                TGDATE = #{tgdate,jdbcType=DATE},
+            </if>
+            <if test="tgvalue != null">
+                TGVALUE = #{tgvalue,jdbcType=DECIMAL},
+            </if>
+            <if test="tgtype != null">
+                TGTYPE = #{tgtype,jdbcType=VARCHAR},
+            </if>
+            <if test="tgunit != null">
+                TGUNIT = #{tgunit,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where CTID = #{ctid,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select CTID, 
+            TGNAME, 
+            TGDATE, 
+            TGVALUE, 
+            TGTYPE, 
+            TGUNIT
+            
+        from t_pdm_contract_target
+        where CTID = #{ctid,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select CTID, 
+            TGNAME, 
+            TGDATE, 
+            TGVALUE, 
+            TGTYPE, 
+            TGUNIT
+            
+        from t_pdm_contract_target
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="ctid != null and ctid != ''">
+                AND CTID = #{ctid,jdbcType=VARCHAR}
+            </if>
+            <if test="tgname != null and tgname != ''">
+                AND TGNAME = #{tgname,jdbcType=VARCHAR}
+            </if>
+            <if test="tgdate != null and tgdate != ''">
+                AND TGDATE like CONCAT(#{tgdate,jdbcType=DATE},'%')
+            </if>
+            <if test="tgvalue != null and tgvalue != ''">
+                AND TGVALUE = #{tgvalue,jdbcType=DECIMAL}
+            </if>
+            <if test="tgtype != null and tgtype != ''">
+                AND TGTYPE = #{tgtype,jdbcType=VARCHAR}
+            </if>
+            <if test="tgunit != null and tgunit != ''">
+                AND TGUNIT = #{tgunit,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+</mapper>

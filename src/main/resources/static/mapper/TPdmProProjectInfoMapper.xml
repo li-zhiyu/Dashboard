@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmProProjectInfoMapper">
+
+    <delete id="delete" parameterType="java.util.Map">
+        delete from t_pdm_pro_project_info
+        where PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_pdm_pro_project_info (
+            PROJECT_ID, 
+            PROJECT_NM, 
+            SOURCE_TYPE, 
+            SOURCE, 
+            PROVINCE_ID, 
+            PROVINCE, 
+            CITY_ID, 
+            CITY, 
+            PROJECT_TYPE, 
+            PROJECT_RANGE, 
+            PROJECT_RANGE_NAME, 
+            COVER_AREA, 
+            DEGREE, 
+            A_NM, 
+            A_LINKMAN, 
+            A_TELNO, 
+            A_LINKJOB, 
+            CONS_UNIT_NM, 
+            CONS_UNIT_LINKMAN, 
+            CONS_UNIT_TELNO, 
+            ENTER_TIME, 
+            CREATE_TIME, 
+            CREATER, 
+            MEMO, 
+            ISVALID, 
+            ESTIMATED_AMOUNT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            COMPANY, 
+            COMPANY_CODE, 
+            PROJECT_STATUS, 
+            BPERSON, 
+            SPERSON, 
+            UPDATE_ID, 
+            UPDATE_TIME, 
+            PUBLISHER, 
+            PUBLISH_TIME, 
+            BUILDINGSQUARE, 
+            EXTENSIONTYPE, 
+            ISDELETE)
+        values (
+            #{projectId,jdbcType=VARCHAR}, 
+            #{projectNm,jdbcType=VARCHAR}, 
+            #{sourceType,jdbcType=VARCHAR}, 
+            #{source,jdbcType=VARCHAR}, 
+            #{provinceId,jdbcType=VARCHAR}, 
+            #{province,jdbcType=VARCHAR}, 
+            #{cityId,jdbcType=VARCHAR}, 
+            #{city,jdbcType=VARCHAR}, 
+            #{projectType,jdbcType=VARCHAR}, 
+            #{projectRange,jdbcType=VARCHAR}, 
+            #{projectRangeName,jdbcType=VARCHAR}, 
+            #{coverArea,jdbcType=DECIMAL}, 
+            #{degree,jdbcType=VARCHAR}, 
+            #{aNm,jdbcType=VARCHAR}, 
+            #{aLinkman,jdbcType=VARCHAR}, 
+            #{aTelno,jdbcType=VARCHAR}, 
+            #{aLinkjob,jdbcType=VARCHAR}, 
+            #{consUnitNm,jdbcType=VARCHAR}, 
+            #{consUnitLinkman,jdbcType=VARCHAR}, 
+            #{consUnitTelno,jdbcType=VARCHAR}, 
+            #{enterTime,jdbcType=DATE}, 
+            #{createTime,jdbcType=DATE}, 
+            #{creater,jdbcType=VARCHAR}, 
+            #{memo,jdbcType=VARCHAR}, 
+            #{isvalid,jdbcType=VARCHAR}, 
+            #{estimatedAmount,jdbcType=DECIMAL}, 
+            #{snakeId,jdbcType=VARCHAR}, 
+            #{startStatus,jdbcType=VARCHAR}, 
+            #{company,jdbcType=VARCHAR}, 
+            #{companyCode,jdbcType=VARCHAR}, 
+            #{projectStatus,jdbcType=VARCHAR}, 
+            #{bperson,jdbcType=VARCHAR}, 
+            #{sperson,jdbcType=VARCHAR}, 
+            #{updateId,jdbcType=VARCHAR}, 
+            #{updateTime,jdbcType=TIMESTAMP}, 
+            #{publisher,jdbcType=VARCHAR}, 
+            #{publishTime,jdbcType=TIMESTAMP}, 
+            #{buildingsquare,jdbcType=DECIMAL}, 
+            #{extensiontype,jdbcType=VARCHAR}, 
+            #{isdelete,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_pdm_pro_project_info
+        <set>
+            <if test="projectNm != null">
+                PROJECT_NM = #{projectNm,jdbcType=VARCHAR},
+            </if>
+            <if test="sourceType != null">
+                SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+            </if>
+            <if test="source != null">
+                SOURCE = #{source,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null">
+                PROVINCE_ID = #{provinceId,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                PROVINCE = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null">
+                CITY_ID = #{cityId,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                CITY = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="projectType != null">
+                PROJECT_TYPE = #{projectType,jdbcType=VARCHAR},
+            </if>
+            <if test="projectRange != null">
+                PROJECT_RANGE = #{projectRange,jdbcType=VARCHAR},
+            </if>
+            <if test="projectRangeName != null">
+                PROJECT_RANGE_NAME = #{projectRangeName,jdbcType=VARCHAR},
+            </if>
+            <if test="coverArea != null">
+                COVER_AREA = #{coverArea,jdbcType=DECIMAL},
+            </if>
+            <if test="degree != null">
+                DEGREE = #{degree,jdbcType=VARCHAR},
+            </if>
+            <if test="aNm != null">
+                A_NM = #{aNm,jdbcType=VARCHAR},
+            </if>
+            <if test="aLinkman != null">
+                A_LINKMAN = #{aLinkman,jdbcType=VARCHAR},
+            </if>
+            <if test="aTelno != null">
+                A_TELNO = #{aTelno,jdbcType=VARCHAR},
+            </if>
+            <if test="aLinkjob != null">
+                A_LINKJOB = #{aLinkjob,jdbcType=VARCHAR},
+            </if>
+            <if test="consUnitNm != null">
+                CONS_UNIT_NM = #{consUnitNm,jdbcType=VARCHAR},
+            </if>
+            <if test="consUnitLinkman != null">
+                CONS_UNIT_LINKMAN = #{consUnitLinkman,jdbcType=VARCHAR},
+            </if>
+            <if test="consUnitTelno != null">
+                CONS_UNIT_TELNO = #{consUnitTelno,jdbcType=VARCHAR},
+            </if>
+            <if test="enterTime != null">
+                ENTER_TIME = #{enterTime,jdbcType=DATE},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=DATE},
+            </if>
+            <if test="creater != null">
+                CREATER = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                MEMO = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="isvalid != null">
+                ISVALID = #{isvalid,jdbcType=VARCHAR},
+            </if>
+            <if test="estimatedAmount != null">
+                ESTIMATED_AMOUNT = #{estimatedAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="snakeId != null">
+                SNAKE_ID = #{snakeId,jdbcType=VARCHAR},
+            </if>
+            <if test="startStatus != null">
+                START_STATUS = #{startStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="companyCode != null">
+                COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectStatus != null">
+                PROJECT_STATUS = #{projectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="bperson != null">
+                BPERSON = #{bperson,jdbcType=VARCHAR},
+            </if>
+            <if test="sperson != null">
+                SPERSON = #{sperson,jdbcType=VARCHAR},
+            </if>
+            <if test="updateId != null">
+                UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="publisher != null">
+                PUBLISHER = #{publisher,jdbcType=VARCHAR},
+            </if>
+            <if test="publishTime != null">
+                PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="buildingsquare != null">
+                BUILDINGSQUARE = #{buildingsquare,jdbcType=DECIMAL},
+            </if>
+            <if test="extensiontype != null">
+                EXTENSIONTYPE = #{extensiontype,jdbcType=VARCHAR},
+            </if>
+            <if test="isdelete != null">
+                ISDELETE = #{isdelete,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select PROJECT_ID, 
+            PROJECT_NM, 
+            SOURCE_TYPE, 
+            SOURCE, 
+            PROVINCE_ID, 
+            PROVINCE, 
+            CITY_ID, 
+            CITY, 
+            PROJECT_TYPE, 
+            PROJECT_RANGE, 
+            PROJECT_RANGE_NAME, 
+            COVER_AREA, 
+            DEGREE, 
+            A_NM, 
+            A_LINKMAN, 
+            A_TELNO, 
+            A_LINKJOB, 
+            CONS_UNIT_NM, 
+            CONS_UNIT_LINKMAN, 
+            CONS_UNIT_TELNO, 
+            ENTER_TIME, 
+            CREATE_TIME, 
+            CREATER, 
+            MEMO, 
+            ISVALID, 
+            ESTIMATED_AMOUNT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            COMPANY, 
+            COMPANY_CODE, 
+            PROJECT_STATUS, 
+            BPERSON, 
+            SPERSON, 
+            UPDATE_ID, 
+            UPDATE_TIME, 
+            PUBLISHER, 
+            PUBLISH_TIME, 
+            BUILDINGSQUARE, 
+            EXTENSIONTYPE, 
+            ISDELETE
+            
+        from t_pdm_pro_project_info
+        where PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select PROJECT_ID, 
+            PROJECT_NM, 
+            SOURCE_TYPE, 
+            SOURCE, 
+            PROVINCE_ID, 
+            PROVINCE, 
+            CITY_ID, 
+            CITY, 
+            PROJECT_TYPE, 
+            PROJECT_RANGE, 
+            PROJECT_RANGE_NAME, 
+            COVER_AREA, 
+            DEGREE, 
+            A_NM, 
+            A_LINKMAN, 
+            A_TELNO, 
+            A_LINKJOB, 
+            CONS_UNIT_NM, 
+            CONS_UNIT_LINKMAN, 
+            CONS_UNIT_TELNO, 
+            ENTER_TIME, 
+            CREATE_TIME, 
+            CREATER, 
+            MEMO, 
+            ISVALID, 
+            ESTIMATED_AMOUNT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            COMPANY, 
+            COMPANY_CODE, 
+            PROJECT_STATUS, 
+            BPERSON, 
+            SPERSON, 
+            UPDATE_ID, 
+            UPDATE_TIME, 
+            PUBLISHER, 
+            PUBLISH_TIME, 
+            BUILDINGSQUARE, 
+            EXTENSIONTYPE, 
+            ISDELETE
+            
+        from t_pdm_pro_project_info
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="projectId != null and projectId != ''">
+                AND PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+            </if>
+            <if test="projectNm != null and projectNm != ''">
+                AND PROJECT_NM = #{projectNm,jdbcType=VARCHAR}
+            </if>
+            <if test="sourceType != null and sourceType != ''">
+                AND SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR}
+            </if>
+            <if test="source != null and source != ''">
+                AND SOURCE = #{source,jdbcType=VARCHAR}
+            </if>
+            <if test="provinceId != null and provinceId != ''">
+                AND PROVINCE_ID = #{provinceId,jdbcType=VARCHAR}
+            </if>
+            <if test="province != null and province != ''">
+                AND PROVINCE = #{province,jdbcType=VARCHAR}
+            </if>
+            <if test="cityId != null and cityId != ''">
+                AND CITY_ID = #{cityId,jdbcType=VARCHAR}
+            </if>
+            <if test="city != null and city != ''">
+                AND CITY = #{city,jdbcType=VARCHAR}
+            </if>
+            <if test="projectType != null and projectType != ''">
+                AND PROJECT_TYPE = #{projectType,jdbcType=VARCHAR}
+            </if>
+            <if test="projectRange != null and projectRange != ''">
+                AND PROJECT_RANGE = #{projectRange,jdbcType=VARCHAR}
+            </if>
+            <if test="projectRangeName != null and projectRangeName != ''">
+                AND PROJECT_RANGE_NAME = #{projectRangeName,jdbcType=VARCHAR}
+            </if>
+            <if test="coverArea != null and coverArea != ''">
+                AND COVER_AREA = #{coverArea,jdbcType=DECIMAL}
+            </if>
+            <if test="degree != null and degree != ''">
+                AND DEGREE = #{degree,jdbcType=VARCHAR}
+            </if>
+            <if test="aNm != null and aNm != ''">
+                AND A_NM = #{aNm,jdbcType=VARCHAR}
+            </if>
+            <if test="aLinkman != null and aLinkman != ''">
+                AND A_LINKMAN = #{aLinkman,jdbcType=VARCHAR}
+            </if>
+            <if test="aTelno != null and aTelno != ''">
+                AND A_TELNO = #{aTelno,jdbcType=VARCHAR}
+            </if>
+            <if test="aLinkjob != null and aLinkjob != ''">
+                AND A_LINKJOB = #{aLinkjob,jdbcType=VARCHAR}
+            </if>
+            <if test="consUnitNm != null and consUnitNm != ''">
+                AND CONS_UNIT_NM = #{consUnitNm,jdbcType=VARCHAR}
+            </if>
+            <if test="consUnitLinkman != null and consUnitLinkman != ''">
+                AND CONS_UNIT_LINKMAN = #{consUnitLinkman,jdbcType=VARCHAR}
+            </if>
+            <if test="consUnitTelno != null and consUnitTelno != ''">
+                AND CONS_UNIT_TELNO = #{consUnitTelno,jdbcType=VARCHAR}
+            </if>
+            <if test="enterTime != null and enterTime != ''">
+                AND ENTER_TIME = #{enterTime,jdbcType=DATE}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND CREATE_TIME = #{createTime,jdbcType=DATE}
+            </if>
+            <if test="creater != null and creater != ''">
+                AND CREATER = #{creater,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null and memo != ''">
+                AND MEMO = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="isvalid != null and isvalid != ''">
+                AND ISVALID = #{isvalid,jdbcType=VARCHAR}
+            </if>
+            <if test="estimatedAmount != null and estimatedAmount != ''">
+                AND ESTIMATED_AMOUNT = #{estimatedAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="snakeId != null and snakeId != ''">
+                AND SNAKE_ID = #{snakeId,jdbcType=VARCHAR}
+            </if>
+            <if test="startStatus != null and startStatus != ''">
+                AND START_STATUS = #{startStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="company != null and company != ''">
+                AND COMPANY = #{company,jdbcType=VARCHAR}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                AND COMPANY_CODE = #{companyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="projectStatus != null and projectStatus != ''">
+                AND PROJECT_STATUS = #{projectStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="bperson != null and bperson != ''">
+                AND BPERSON = #{bperson,jdbcType=VARCHAR}
+            </if>
+            <if test="sperson != null and sperson != ''">
+                AND SPERSON = #{sperson,jdbcType=VARCHAR}
+            </if>
+            <if test="updateId != null and updateId != ''">
+                AND UPDATE_ID = #{updateId,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != ''">
+                AND UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="publisher != null and publisher != ''">
+                AND PUBLISHER = #{publisher,jdbcType=VARCHAR}
+            </if>
+            <if test="publishTime != null and publishTime != ''">
+                AND PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="buildingsquare != null and buildingsquare != ''">
+                AND BUILDINGSQUARE = #{buildingsquare,jdbcType=DECIMAL}
+            </if>
+            <if test="extensiontype != null and extensiontype != ''">
+                AND EXTENSIONTYPE = #{extensiontype,jdbcType=VARCHAR}
+            </if>
+            <if test="isdelete != null and isdelete != ''">
+                AND ISDELETE = #{isdelete,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+    
+    <select id="querySumByDegree" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT  case when (DEGREE='CN006001') then 'A(3个月内)' when (DEGREE='CN006002') then 'B(3-6个月)' when (DEGREE='CN006003') then 'C(6个月以上)' END AS TYPE,count(*)SUM 
+    FROM `t_pdm_pro_project_info` 
+    GROUP BY TYPE;
+    </select>
+</mapper>

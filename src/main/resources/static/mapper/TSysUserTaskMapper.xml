@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TSysUserTaskMapper">
+
+    <delete id="delete" parameterType="java.util.Map">
+        delete from t_sys_user_task
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_sys_user_task (
+            USER_ID, 
+            USER_NAME, 
+            TASKNUM, 
+            VIEWNUM, 
+            PLANNUM, 
+            INFONUM, 
+            REVIEWNUM, 
+            PLOTNUM, 
+            AUDITNUM, 
+            UPDETIME)
+        values (
+            #{userId,jdbcType=VARCHAR}, 
+            #{userName,jdbcType=VARCHAR}, 
+            #{tasknum,jdbcType=VARCHAR}, 
+            #{viewnum,jdbcType=VARCHAR}, 
+            #{plannum,jdbcType=VARCHAR}, 
+            #{infonum,jdbcType=VARCHAR}, 
+            #{reviewnum,jdbcType=VARCHAR}, 
+            #{plotnum,jdbcType=VARCHAR}, 
+            #{auditnum,jdbcType=VARCHAR}, 
+            #{updetime,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_sys_user_task
+        <set>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="tasknum != null">
+                TASKNUM = #{tasknum,jdbcType=VARCHAR},
+            </if>
+            <if test="viewnum != null">
+                VIEWNUM = #{viewnum,jdbcType=VARCHAR},
+            </if>
+            <if test="plannum != null">
+                PLANNUM = #{plannum,jdbcType=VARCHAR},
+            </if>
+            <if test="infonum != null">
+                INFONUM = #{infonum,jdbcType=VARCHAR},
+            </if>
+            <if test="reviewnum != null">
+                REVIEWNUM = #{reviewnum,jdbcType=VARCHAR},
+            </if>
+            <if test="plotnum != null">
+                PLOTNUM = #{plotnum,jdbcType=VARCHAR},
+            </if>
+            <if test="auditnum != null">
+                AUDITNUM = #{auditnum,jdbcType=VARCHAR},
+            </if>
+            <if test="updetime != null">
+                UPDETIME = #{updetime,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select USER_ID, 
+            USER_NAME, 
+            TASKNUM, 
+            VIEWNUM, 
+            PLANNUM, 
+            INFONUM, 
+            REVIEWNUM, 
+            PLOTNUM, 
+            AUDITNUM, 
+            UPDETIME
+            
+        from t_sys_user_task
+        where USER_ID = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select USER_ID, 
+            USER_NAME, 
+            TASKNUM, 
+            VIEWNUM, 
+            PLANNUM, 
+            INFONUM, 
+            REVIEWNUM, 
+            PLOTNUM, 
+            AUDITNUM, 
+            UPDETIME
+            
+        from t_sys_user_task
+        order by CAST(VIEWNUM AS DECIMAL)  desc
+        limit 10
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="userId != null and userId != ''">
+                AND USER_ID = #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="userName != null and userName != ''">
+                AND USER_NAME = #{userName,jdbcType=VARCHAR}
+            </if>
+            <if test="tasknum != null and tasknum != ''">
+                AND TASKNUM = #{tasknum,jdbcType=VARCHAR}
+            </if>
+            <if test="viewnum != null and viewnum != ''">
+                AND VIEWNUM = #{viewnum,jdbcType=VARCHAR}
+            </if>
+            <if test="plannum != null and plannum != ''">
+                AND PLANNUM = #{plannum,jdbcType=VARCHAR}
+            </if>
+            <if test="infonum != null and infonum != ''">
+                AND INFONUM = #{infonum,jdbcType=VARCHAR}
+            </if>
+            <if test="reviewnum != null and reviewnum != ''">
+                AND REVIEWNUM = #{reviewnum,jdbcType=VARCHAR}
+            </if>
+            <if test="plotnum != null and plotnum != ''">
+                AND PLOTNUM = #{plotnum,jdbcType=VARCHAR}
+            </if>
+            <if test="auditnum != null and auditnum != ''">
+                AND AUDITNUM = #{auditnum,jdbcType=VARCHAR}
+            </if>
+            <if test="updetime != null and updetime != ''">
+                AND UPDETIME = #{updetime,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+    <select id="queryAll"  resultType="java.util.Map">
+        select USER_ID, 
+            USER_NAME, 
+            TASKNUM, 
+            VIEWNUM, 
+            PLANNUM, 
+            INFONUM, 
+            REVIEWNUM, 
+            PLOTNUM, 
+            AUDITNUM, 
+            UPDETIME
+            
+        from t_sys_user_task        
+    </select>
+    
+        <select id="queryNow"  parameterType="java.util.Map" resultType="java.util.Map">
+        select USER_ID, 
+            USER_NAME, 
+            TASKNUM, 
+            VIEWNUM, 
+            PLANNUM, 
+            INFONUM, 
+            REVIEWNUM, 
+            PLOTNUM, 
+            AUDITNUM, 
+            UPDETIME
+            
+        from t_sys_user_task 
+    </select>
+</mapper>

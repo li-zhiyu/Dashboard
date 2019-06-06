@@ -1,0 +1,567 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>pdm-dashboard</title>
+    <meta name="description" content="Droopy is a Dashboard &amp; Admin Site Responsive Template by hencework.">
+    <meta name="keywords"
+        content="admin, admin dashboard, admin template, cms, crm, Droopy Admin, Droopyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application">
+    <meta name="author" content="hencework">
+    <!-- <script type="text/javascript" src="/js/echarts.min.js"></script> -->
+    <script type="text/javascript" src="/js/ext/ext-all.js"></script>
+    <script type="text/javascript" src="/myjs/get_option.js"></script>
+    <script type="text/javascript" src="/myjs/event.js"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Data table CSS -->
+    <link href="/vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+        type="text/css">
+    <!-- Toast CSS -->
+    <link href="/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet"
+        type="text/css">
+    <!-- bootstrap-select CSS -->
+    <link href="/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .mb-15:hover {
+            background-color: burlywood;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body id="ext-element-1" style="overflow: hidden" class="x-body x-webkit x-chrome x-desktop x-scroller">
+
+    <div style="min-height: 914px; background: #FFF ">
+        <div class="container-fluid pt-10">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block1">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">合同签订</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(1)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="row">
+                                        <div id="sign-pie" style="height: 180px; width:180px;cursor:pointer"
+                                            onclick="javascript:location.href='ContractSignByYear'">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="label-chatrs mt-10 ml-10" style="width:180px">
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">完成率：</span>
+                                                <span id="sign-rate"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">0%</span>
+                                            </div>
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">年度目标：</span>
+                                                <span id="sign-target"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">万元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pa-0">
+                                    <div class="label-chatrs mt-10" style="padding-top:50px">
+                                        <div class="mb-15" onclick="javascript:location.href='ContractSignByQuarter'">
+                                            <span class="clabels inline-block bg-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本季度签订：</span>
+                                            <span id="sign-currentQuarter"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="mb-15" onclick="javascript:location.href='ContractSignByMonth'">
+                                            <span class="clabels inline-block bg-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本月签订：</span>
+                                            <span id="sign-currentMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="" style="margin-bottom:15px">
+                                            <span class="clabels inline-block bg-xtra-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">上月签订：</span>
+                                            <span id="sign-lastMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block2">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">合同回款</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i> </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(2)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="row">
+                                        <div id="refund-pie" style="height: 180px; width:180px"
+                                            onclick="javascript:location.href='ContractRefundByYear'">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="label-chatrs mt-10 ml-10" style="width:180px">
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">完成率：</span>
+                                                <span id="refund-rate"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">0%</span>
+                                            </div>
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">年度目标：</span>
+                                                <span id="refund-target"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">万元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pa-0">
+                                    <div class="label-chatrs mt-10" style="padding-top:50px">
+                                        <div class="mb-15" onclick="javascript:location.href='ContractRefundByQuarter'">
+                                            <span class="clabels inline-block bg-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本季度回款：</span>
+                                            <span id="refund-currentQuarter"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="mb-15" onclick="javascript:location.href='ContractRefundByMonth'">
+                                            <span class="clabels inline-block bg-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本月回款：</span>
+                                            <span id="refund-currentMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="" style="margin-bottom:15px">
+                                            <span class="clabels inline-block bg-xtra-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">上月回款：</span>
+                                            <span id="refund-lastMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block3">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">产值确认</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i> </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(3)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="row">
+                                        <div id="OV-confirm-pie" style="height: 180px; width:180px"
+                                            onclick="javascript:location.href='OVConfirmByYear'">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="label-chatrs mt-10 ml-10" style="width:180px">
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">完成率：</span>
+                                                <span id="OV-confirm-rate"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">0%</span>
+                                            </div>
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">年度目标：</span>
+                                                <span id="OV-confirm-target"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">万元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pa-0">
+                                    <div class="label-chatrs mt-10" style="padding-top:50px">
+                                        <div class="mb-15" onclick="javascript:location.href='OVConfirmByQuarter'">
+                                            <span class="clabels inline-block bg-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本季度确认：</span>
+                                            <span id="OV-confirm-currentQuarter"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="mb-15" onclick="javascript:location.href='OVConfirmByMonth'">
+                                            <span class="clabels inline-block bg-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本月确认：</span>
+                                            <span id="OV-confirm-currentMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="" style="margin-bottom:15px">
+                                            <span class="clabels inline-block bg-xtra-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">上月确认：</span>
+                                            <span id="OV-confirm-lastMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block4">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">产值自评</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(4)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="row">
+                                        <div id="OV-SelfEva-pie" style="height: 180px; width:180px"
+                                            onclick="javascript:location.href='OVSelfEvaByYear'">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="label-chatrs mt-10 ml-10" style="width:180px">
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">完成率：</span>
+                                                <span id="OV-SelfEva-rate"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">0%</span>
+                                            </div>
+                                            <div class="mb-5">
+                                                <span class="clabels inline-block bg-yellow mr-5"></span>
+                                                <span
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font weight-600">年度目标：</span>
+                                                <span id="OV-SelfEva-target"
+                                                    class="clabels-text font-12 inline-block txt-dark capitalize-font">万元</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pa-0">
+                                    <div class="label-chatrs mt-10 " style="padding-top:50px">
+                                        <div class="mb-15" onclick="javascript:location.href='OVSelfEvaByQuarter'">
+                                            <span class="clabels inline-block bg-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本季度自评：</span>
+                                            <span id="OV-SelfEva-currentQuarter"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="mb-15" onclick="javascript:location.href='OVSelfEvaByMonth'">
+                                            <span class="clabels inline-block bg-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">本月自评：</span>
+                                            <span id="OV-SelfEva-currentMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                        <div class="" style="margin-bottom:15px">
+                                            <span class="clabels inline-block bg-xtra-light-green mr-5"></span>
+                                            <span
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">上月自评：</span>
+                                            <span id="OV-SelfEva-lastMonth"
+                                                class="clabels-text font-12 inline-block txt-dark capitalize-font">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12" id="block5">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">项目文件</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(5)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div id="project-file" style="height: 242px; width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block6">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">拓展项目</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(6)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div id="pro-project" style="height: 240px; width:100%;cursor:pointer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block7">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">项目状态</h6>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="pull-left inline-block refresh mr-15"> <i
+                                        class="zmdi zmdi-replay"></i>
+                                </a>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(7)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div id="project-status" style="height: 240px; width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="block8">
+                    <div class="panel panel-default card-view panel-refresh">
+                        <div class="refresh-container" style="display: none;">
+                            <div class="la-anim-1"></div>
+                        </div>
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left">
+                                <h6 class="panel-title txt-dark">项目流程</h6>
+                            </div>
+                            <div class="pull-right">
+                                <div class="pull-left form-group mb-0 sm-bootstrap-select mr-15">
+                                    <select class="selectpicker" data-style="form-control"
+                                        onchange="selectOnchang(this)">
+                                        <option value='1'>累计</option>
+                                        <option value='2'>本年</option>
+                                        <option value='3'>本季度</option>
+                                        <option value='4'>本月</option>
+                                    </select>
+                                </div>
+                                <div class="pull-left inline-block dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
+                                        role="button"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu bullet dropdown-menu-right" role="menu">
+                                        <li role="presentation"><a href="javascript:deleteBlock(8)" role="menuitem"><i
+                                                    class="icon wb-reply" aria-hidden="true"></i>移除</a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body" style="padding:0px">
+
+                                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <div id="project-flow" style="height: 240px; width:100%">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+    </div>
+    <!-- JavaScript -->
+    <!-- jQuery -->
+    <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Counter Animation JavaScript -->
+    <script src="/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+    <!-- Data table JavaScript -->
+    <script src="/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/dist/js/productorders-data.js"></script>
+    <!-- Owl JavaScript -->
+    <script src="/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+    <!-- Switchery JavaScript -->
+    <script src="/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+    <!-- Slimscroll JavaScript -->
+    <script src="/dist/js/jquery.slimscroll.js"></script>
+    <!-- Fancy Dropdown JS -->
+    <script src="/dist/js/dropdown-bootstrap-extended.js"></script>
+    <!-- Sparkline JavaScript -->
+    <script src="/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- EChartJS JavaScript -->
+    <script src="/vendors/bower_components/echarts/dist/echarts-en.min.js"></script>
+    <script src="/vendors/echarts-liquidfill.min.js"></script>
+    <!-- Toast JavaScript -->
+    <script src="/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+    <!-- ChartJS JavaScript -->
+    <script src="/vendors/chart.js/Chart.min.js"></script>
+    <!-- Bootstrap Select JavaScript -->
+    <script src="/vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- EasyPieChart JavaScript -->
+    <script src="/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <!-- Init JavaScript -->
+    <script src="/myjs/dashboard-data.js"></script>
+</body>
+
+</html>

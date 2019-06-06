@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmProjectInfoMapper">
+
+    <delete id="delete" parameterType="map">
+        delete from t_pdm_project_info
+        where ID = #{id,jdbcType=VARCHAR}
+          and PROJECT_NAME = #{projectName,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_pdm_project_info (
+            ID, 
+            PROJECT_NAME, 
+            PROJECT_ID, 
+            PROJECT_CODE, 
+            ORDER_NO, 
+            BUILD_NUM, 
+            COVER_AREA, 
+            BEGIN_TIME, 
+            END_TIME, 
+            HASMOBILFAC, 
+            MEMO_, 
+            STATUS, 
+            REC_TIME, 
+            RECORDER, 
+            REGORG, 
+            REGORG_CODE, 
+            PROJECT_TYPE, 
+            PROJECT_STATUS, 
+            PROJECT_BUILDER, 
+            PROJECT_ADDRESS, 
+            STAGE, 
+            MODEL_ID, 
+            PROLEADER_ID, 
+            PROLEADER_NM, 
+            MAJORS, 
+            INFORMATION, 
+            CYCLE, 
+            REQUIREMENT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            ORDER_NM, 
+            COMMISSIONING_PARTY, 
+            PROJECT_RANGE, 
+            COMPANY, 
+            PROJECT_RANGE_NAME, 
+            SUBPROJECT, 
+            COMPANY_CODE, 
+            MNG_NM, 
+            PROCESSINSTID, 
+            PROPROJECT_ID, 
+            STANLAYERNUM, 
+            STRUCSYS, 
+            TRANSPORTDIST, 
+            PROJECTUSE, 
+            ASSEMBLYRATE, 
+            PREFABRATE, 
+            NPSTANDARD, 
+            BPERSON, 
+            SECRECYLEVEL, 
+            PC_VOLUME, 
+            EXEPHAES, 
+            MARK, 
+            EX_STATE)
+        values (
+            #{id,jdbcType=VARCHAR}, 
+            #{projectName,jdbcType=VARCHAR}, 
+            #{projectId,jdbcType=VARCHAR}, 
+            #{projectCode,jdbcType=VARCHAR}, 
+            #{orderNo,jdbcType=VARCHAR}, 
+            #{buildNum,jdbcType=DECIMAL}, 
+            #{coverArea,jdbcType=DECIMAL}, 
+            #{beginTime,jdbcType=TIMESTAMP}, 
+            #{endTime,jdbcType=TIMESTAMP}, 
+            #{hasmobilfac,jdbcType=CHAR}, 
+            #{memo,jdbcType=VARCHAR}, 
+            #{status,jdbcType=VARCHAR}, 
+            #{recTime,jdbcType=TIMESTAMP}, 
+            #{recorder,jdbcType=VARCHAR}, 
+            #{regorg,jdbcType=VARCHAR}, 
+            #{regorgCode,jdbcType=VARCHAR}, 
+            #{projectType,jdbcType=VARCHAR}, 
+            #{projectStatus,jdbcType=VARCHAR}, 
+            #{projectBuilder,jdbcType=VARCHAR}, 
+            #{projectAddress,jdbcType=VARCHAR}, 
+            #{stage,jdbcType=VARCHAR}, 
+            #{modelId,jdbcType=VARCHAR}, 
+            #{proleaderId,jdbcType=VARCHAR}, 
+            #{proleaderNm,jdbcType=VARCHAR}, 
+            #{majors,jdbcType=VARCHAR}, 
+            #{information,jdbcType=VARCHAR}, 
+            #{cycle,jdbcType=VARCHAR}, 
+            #{requirement,jdbcType=VARCHAR}, 
+            #{snakeId,jdbcType=VARCHAR}, 
+            #{startStatus,jdbcType=VARCHAR}, 
+            #{orderNm,jdbcType=VARCHAR}, 
+            #{commissioningParty,jdbcType=VARCHAR}, 
+            #{projectRange,jdbcType=VARCHAR}, 
+            #{company,jdbcType=VARCHAR}, 
+            #{projectRangeName,jdbcType=VARCHAR}, 
+            #{subproject,jdbcType=VARCHAR}, 
+            #{companyCode,jdbcType=VARCHAR}, 
+            #{mngNm,jdbcType=VARCHAR}, 
+            #{processinstid,jdbcType=VARCHAR}, 
+            #{proprojectId,jdbcType=VARCHAR}, 
+            #{stanlayernum,jdbcType=VARCHAR}, 
+            #{strucsys,jdbcType=VARCHAR}, 
+            #{transportdist,jdbcType=VARCHAR}, 
+            #{projectuse,jdbcType=VARCHAR}, 
+            #{assemblyrate,jdbcType=VARCHAR}, 
+            #{prefabrate,jdbcType=VARCHAR}, 
+            #{npstandard,jdbcType=VARCHAR}, 
+            #{bperson,jdbcType=VARCHAR}, 
+            #{secrecylevel,jdbcType=VARCHAR}, 
+            #{pcVolume,jdbcType=CHAR}, 
+            #{exephaes,jdbcType=VARCHAR}, 
+            #{mark,jdbcType=VARCHAR}, 
+            #{exState,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_pdm_project_info
+        <set>
+            <if test="projectId != null">
+                PROJECT_ID = #{projectId,jdbcType=VARCHAR},
+            </if>
+            <if test="projectCode != null">
+                PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNo != null">
+                ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="buildNum != null">
+                BUILD_NUM = #{buildNum,jdbcType=DECIMAL},
+            </if>
+            <if test="coverArea != null">
+                COVER_AREA = #{coverArea,jdbcType=DECIMAL},
+            </if>
+            <if test="beginTime != null">
+                BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                END_TIME = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hasmobilfac != null">
+                HASMOBILFAC = #{hasmobilfac,jdbcType=CHAR},
+            </if>
+            <if test="memo != null">
+                MEMO_ = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="recTime != null">
+                REC_TIME = #{recTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="recorder != null">
+                RECORDER = #{recorder,jdbcType=VARCHAR},
+            </if>
+            <if test="regorg != null">
+                REGORG = #{regorg,jdbcType=VARCHAR},
+            </if>
+            <if test="regorgCode != null">
+                REGORG_CODE = #{regorgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectType != null">
+                PROJECT_TYPE = #{projectType,jdbcType=VARCHAR},
+            </if>
+            <if test="projectStatus != null">
+                PROJECT_STATUS = #{projectStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="projectBuilder != null">
+                PROJECT_BUILDER = #{projectBuilder,jdbcType=VARCHAR},
+            </if>
+            <if test="projectAddress != null">
+                PROJECT_ADDRESS = #{projectAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="stage != null">
+                STAGE = #{stage,jdbcType=VARCHAR},
+            </if>
+            <if test="modelId != null">
+                MODEL_ID = #{modelId,jdbcType=VARCHAR},
+            </if>
+            <if test="proleaderId != null">
+                PROLEADER_ID = #{proleaderId,jdbcType=VARCHAR},
+            </if>
+            <if test="proleaderNm != null">
+                PROLEADER_NM = #{proleaderNm,jdbcType=VARCHAR},
+            </if>
+            <if test="majors != null">
+                MAJORS = #{majors,jdbcType=VARCHAR},
+            </if>
+            <if test="information != null">
+                INFORMATION = #{information,jdbcType=VARCHAR},
+            </if>
+            <if test="cycle != null">
+                CYCLE = #{cycle,jdbcType=VARCHAR},
+            </if>
+            <if test="requirement != null">
+                REQUIREMENT = #{requirement,jdbcType=VARCHAR},
+            </if>
+            <if test="snakeId != null">
+                SNAKE_ID = #{snakeId,jdbcType=VARCHAR},
+            </if>
+            <if test="startStatus != null">
+                START_STATUS = #{startStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNm != null">
+                ORDER_NM = #{orderNm,jdbcType=VARCHAR},
+            </if>
+            <if test="commissioningParty != null">
+                COMMISSIONING_PARTY = #{commissioningParty,jdbcType=VARCHAR},
+            </if>
+            <if test="projectRange != null">
+                PROJECT_RANGE = #{projectRange,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                COMPANY = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="projectRangeName != null">
+                PROJECT_RANGE_NAME = #{projectRangeName,jdbcType=VARCHAR},
+            </if>
+            <if test="subproject != null">
+                SUBPROJECT = #{subproject,jdbcType=VARCHAR},
+            </if>
+            <if test="companyCode != null">
+                COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mngNm != null">
+                MNG_NM = #{mngNm,jdbcType=VARCHAR},
+            </if>
+            <if test="processinstid != null">
+                PROCESSINSTID = #{processinstid,jdbcType=VARCHAR},
+            </if>
+            <if test="proprojectId != null">
+                PROPROJECT_ID = #{proprojectId,jdbcType=VARCHAR},
+            </if>
+            <if test="stanlayernum != null">
+                STANLAYERNUM = #{stanlayernum,jdbcType=VARCHAR},
+            </if>
+            <if test="strucsys != null">
+                STRUCSYS = #{strucsys,jdbcType=VARCHAR},
+            </if>
+            <if test="transportdist != null">
+                TRANSPORTDIST = #{transportdist,jdbcType=VARCHAR},
+            </if>
+            <if test="projectuse != null">
+                PROJECTUSE = #{projectuse,jdbcType=VARCHAR},
+            </if>
+            <if test="assemblyrate != null">
+                ASSEMBLYRATE = #{assemblyrate,jdbcType=VARCHAR},
+            </if>
+            <if test="prefabrate != null">
+                PREFABRATE = #{prefabrate,jdbcType=VARCHAR},
+            </if>
+            <if test="npstandard != null">
+                NPSTANDARD = #{npstandard,jdbcType=VARCHAR},
+            </if>
+            <if test="bperson != null">
+                BPERSON = #{bperson,jdbcType=VARCHAR},
+            </if>
+            <if test="secrecylevel != null">
+                SECRECYLEVEL = #{secrecylevel,jdbcType=VARCHAR},
+            </if>
+            <if test="pcVolume != null">
+                PC_VOLUME = #{pcVolume,jdbcType=CHAR},
+            </if>
+            <if test="exephaes != null">
+                EXEPHAES = #{exephaes,jdbcType=VARCHAR},
+            </if>
+            <if test="mark != null">
+                MARK = #{mark,jdbcType=VARCHAR},
+            </if>
+            <if test="exState != null">
+                EX_STATE = #{exState,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+          and PROJECT_NAME = #{projectName,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            PROJECT_NAME, 
+            PROJECT_ID, 
+            PROJECT_CODE, 
+            ORDER_NO, 
+            BUILD_NUM, 
+            COVER_AREA, 
+            BEGIN_TIME, 
+            END_TIME, 
+            HASMOBILFAC, 
+            MEMO_, 
+            STATUS, 
+            REC_TIME, 
+            RECORDER, 
+            REGORG, 
+            REGORG_CODE, 
+            PROJECT_TYPE, 
+            PROJECT_STATUS, 
+            PROJECT_BUILDER, 
+            PROJECT_ADDRESS, 
+            STAGE, 
+            MODEL_ID, 
+            PROLEADER_ID, 
+            PROLEADER_NM, 
+            MAJORS, 
+            INFORMATION, 
+            CYCLE, 
+            REQUIREMENT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            ORDER_NM, 
+            COMMISSIONING_PARTY, 
+            PROJECT_RANGE, 
+            COMPANY, 
+            PROJECT_RANGE_NAME, 
+            SUBPROJECT, 
+            COMPANY_CODE, 
+            MNG_NM, 
+            PROCESSINSTID, 
+            PROPROJECT_ID, 
+            STANLAYERNUM, 
+            STRUCSYS, 
+            TRANSPORTDIST, 
+            PROJECTUSE, 
+            ASSEMBLYRATE, 
+            PREFABRATE, 
+            NPSTANDARD, 
+            BPERSON, 
+            SECRECYLEVEL, 
+            PC_VOLUME, 
+            EXEPHAES, 
+            MARK, 
+            EX_STATE
+            
+        from t_pdm_project_info
+        where ID = #{id,jdbcType=VARCHAR}
+          and PROJECT_NAME = #{projectName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            PROJECT_NAME, 
+            PROJECT_ID, 
+            PROJECT_CODE, 
+            ORDER_NO, 
+            BUILD_NUM, 
+            COVER_AREA, 
+            HASMOBILFAC, 
+            MEMO_, 
+            STATUS, 
+            RECORDER, 
+            REGORG, 
+            REGORG_CODE, 
+            PROJECT_TYPE, 
+            PROJECT_STATUS, 
+            PROJECT_BUILDER, 
+            PROJECT_ADDRESS, 
+            STAGE, 
+            MODEL_ID, 
+            PROLEADER_ID, 
+            PROLEADER_NM, 
+            MAJORS, 
+            INFORMATION, 
+            CYCLE, 
+            REQUIREMENT, 
+            SNAKE_ID, 
+            START_STATUS, 
+            ORDER_NM, 
+            COMMISSIONING_PARTY, 
+            PROJECT_RANGE, 
+            COMPANY, 
+            PROJECT_RANGE_NAME, 
+            SUBPROJECT, 
+            COMPANY_CODE, 
+            MNG_NM, 
+            PROCESSINSTID, 
+            PROPROJECT_ID, 
+            STANLAYERNUM, 
+            STRUCSYS, 
+            TRANSPORTDIST, 
+            PROJECTUSE, 
+            ASSEMBLYRATE, 
+            PREFABRATE, 
+            NPSTANDARD, 
+            BPERSON, 
+            SECRECYLEVEL, 
+            PC_VOLUME, 
+            EXEPHAES, 
+            MARK, 
+            EX_STATE
+            
+        from t_pdm_project_info
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != null and id != ''">
+                AND ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="projectName != null and projectName != ''">
+                AND PROJECT_NAME = #{projectName,jdbcType=VARCHAR}
+            </if>
+            <if test="projectId != null and projectId != ''">
+                AND PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+            </if>
+            <if test="projectCode != null and projectCode != ''">
+                AND PROJECT_CODE = #{projectCode,jdbcType=VARCHAR}
+            </if>
+            <if test="orderNo != null and orderNo != ''">
+                AND ORDER_NO = #{orderNo,jdbcType=VARCHAR}
+            </if>
+            <if test="buildNum != null and buildNum != ''">
+                AND BUILD_NUM = #{buildNum,jdbcType=DECIMAL}
+            </if>
+            <if test="coverArea != null and coverArea != ''">
+                AND COVER_AREA = #{coverArea,jdbcType=DECIMAL}
+            </if>
+            <if test="beginTime != null and beginTime != ''">
+                AND BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                AND END_TIME = #{endTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="hasmobilfac != null and hasmobilfac != ''">
+                AND HASMOBILFAC = #{hasmobilfac,jdbcType=CHAR}
+            </if>
+            <if test="memo != null and memo != ''">
+                AND MEMO_ = #{memo,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null and status != ''">
+                AND STATUS = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="recTime != null and recTime != ''">
+                AND REC_TIME = #{recTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="recorder != null and recorder != ''">
+                AND RECORDER = #{recorder,jdbcType=VARCHAR}
+            </if>
+            <if test="regorg != null and regorg != ''">
+                AND REGORG = #{regorg,jdbcType=VARCHAR}
+            </if>
+            <if test="regorgCode != null and regorgCode != ''">
+                AND REGORG_CODE = #{regorgCode,jdbcType=VARCHAR}
+            </if>
+            <if test="projectType != null and projectType != ''">
+                AND PROJECT_TYPE = #{projectType,jdbcType=VARCHAR}
+            </if>
+            <if test="projectStatus != null and projectStatus != ''">
+                AND PROJECT_STATUS = #{projectStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="projectBuilder != null and projectBuilder != ''">
+                AND PROJECT_BUILDER = #{projectBuilder,jdbcType=VARCHAR}
+            </if>
+            <if test="projectAddress != null and projectAddress != ''">
+                AND PROJECT_ADDRESS = #{projectAddress,jdbcType=VARCHAR}
+            </if>
+            <if test="stage != null and stage != ''">
+                AND STAGE = #{stage,jdbcType=VARCHAR}
+            </if>
+            <if test="modelId != null and modelId != ''">
+                AND MODEL_ID = #{modelId,jdbcType=VARCHAR}
+            </if>
+            <if test="proleaderId != null and proleaderId != ''">
+                AND PROLEADER_ID = #{proleaderId,jdbcType=VARCHAR}
+            </if>
+            <if test="proleaderNm != null and proleaderNm != ''">
+                AND PROLEADER_NM = #{proleaderNm,jdbcType=VARCHAR}
+            </if>
+            <if test="majors != null and majors != ''">
+                AND MAJORS = #{majors,jdbcType=VARCHAR}
+            </if>
+            <if test="information != null and information != ''">
+                AND INFORMATION = #{information,jdbcType=VARCHAR}
+            </if>
+            <if test="cycle != null and cycle != ''">
+                AND CYCLE = #{cycle,jdbcType=VARCHAR}
+            </if>
+            <if test="requirement != null and requirement != ''">
+                AND REQUIREMENT = #{requirement,jdbcType=VARCHAR}
+            </if>
+            <if test="snakeId != null and snakeId != ''">
+                AND SNAKE_ID = #{snakeId,jdbcType=VARCHAR}
+            </if>
+            <if test="startStatus != null and startStatus != ''">
+                AND START_STATUS = #{startStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="orderNm != null and orderNm != ''">
+                AND ORDER_NM = #{orderNm,jdbcType=VARCHAR}
+            </if>
+            <if test="commissioningParty != null and commissioningParty != ''">
+                AND COMMISSIONING_PARTY = #{commissioningParty,jdbcType=VARCHAR}
+            </if>
+            <if test="projectRange != null and projectRange != ''">
+                AND PROJECT_RANGE = #{projectRange,jdbcType=VARCHAR}
+            </if>
+            <if test="company != null and company != ''">
+                AND COMPANY = #{company,jdbcType=VARCHAR}
+            </if>
+            <if test="projectRangeName != null and projectRangeName != ''">
+                AND PROJECT_RANGE_NAME = #{projectRangeName,jdbcType=VARCHAR}
+            </if>
+            <if test="subproject != null and subproject != ''">
+                AND SUBPROJECT = #{subproject,jdbcType=VARCHAR}
+            </if>
+            <if test="companyCode != null and companyCode != ''">
+                AND COMPANY_CODE = #{companyCode,jdbcType=VARCHAR}
+            </if>
+            <if test="mngNm != null and mngNm != ''">
+                AND MNG_NM = #{mngNm,jdbcType=VARCHAR}
+            </if>
+            <if test="processinstid != null and processinstid != ''">
+                AND PROCESSINSTID = #{processinstid,jdbcType=VARCHAR}
+            </if>
+            <if test="proprojectId != null and proprojectId != ''">
+                AND PROPROJECT_ID = #{proprojectId,jdbcType=VARCHAR}
+            </if>
+            <if test="stanlayernum != null and stanlayernum != ''">
+                AND STANLAYERNUM = #{stanlayernum,jdbcType=VARCHAR}
+            </if>
+            <if test="strucsys != null and strucsys != ''">
+                AND STRUCSYS = #{strucsys,jdbcType=VARCHAR}
+            </if>
+            <if test="transportdist != null and transportdist != ''">
+                AND TRANSPORTDIST = #{transportdist,jdbcType=VARCHAR}
+            </if>
+            <if test="projectuse != null and projectuse != ''">
+                AND PROJECTUSE = #{projectuse,jdbcType=VARCHAR}
+            </if>
+            <if test="assemblyrate != null and assemblyrate != ''">
+                AND ASSEMBLYRATE = #{assemblyrate,jdbcType=VARCHAR}
+            </if>
+            <if test="prefabrate != null and prefabrate != ''">
+                AND PREFABRATE = #{prefabrate,jdbcType=VARCHAR}
+            </if>
+            <if test="npstandard != null and npstandard != ''">
+                AND NPSTANDARD = #{npstandard,jdbcType=VARCHAR}
+            </if>
+            <if test="bperson != null and bperson != ''">
+                AND BPERSON = #{bperson,jdbcType=VARCHAR}
+            </if>
+            <if test="secrecylevel != null and secrecylevel != ''">
+                AND SECRECYLEVEL = #{secrecylevel,jdbcType=VARCHAR}
+            </if>
+            <if test="pcVolume != null and pcVolume != ''">
+                AND PC_VOLUME = #{pcVolume,jdbcType=CHAR}
+            </if>
+            <if test="exephaes != null and exephaes != ''">
+                AND EXEPHAES = #{exephaes,jdbcType=VARCHAR}
+            </if>
+            <if test="mark != null and mark != ''">
+                AND MARK = #{mark,jdbcType=VARCHAR}
+            </if>
+            <if test="exState != null and exState != ''">
+                AND EX_STATE = #{exState,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+    
+    <select id="queryProjectStatus" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT  EX_STATE, count(*) SUM FROM `t_pdm_project_info`
+    GROUP BY EX_STATE;
+    </select>
+</mapper>

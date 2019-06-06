@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>pdm-dashboard</title>
+    <meta name="description" content="Droopy is a Dashboard &amp; Admin Site Responsive Template by hencework.">
+    <meta name="keywords"
+        content="admin, admin dashboard, admin template, cms, crm, Droopy Admin, Droopyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application">
+    <meta name="author" content="hencework">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
+    <!--KindEditor css-->
+    <link rel="stylesheet" href="/js/kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="/js/kindeditor/themes/simple/simple.css" />
+    <link rel="stylesheet" href="/js/kindeditor/plugins/autoheight/autoheight.js" />
+    <!-- KindEditor JavaScript -->
+    <script src="/js/kindeditor/kindeditor-all-min.js"></script>
+    <script src="/js/kindeditor/lang/zh-CN.js"></script>
+    <!-- my JavaScript -->
+    <script type="text/javascript" src="/myjs/event.js"></script>
+    <script type="text/javascript" src="/js/ext/ext-all.js"></script>
+
+    <script type="text/javascript">
+        //KindEditor脚本
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('#txt-body', {
+                items: ['formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', '|',
+                    'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|',
+                    'emoticons', 'image', 'code', 'link', '|', 'removeformat', 'undo', 'redo', 'fullscreen', 'source', 'about'],
+                themeType: 'simple',
+                autoHeightMode: true,
+            });
+
+
+        });
+    </script>
+
+</head>
+
+<body id="ext-element-1" style="overflow: hidden" class="x-body x-webkit x-chrome x-desktop x-scroller">
+
+    <div style="min-height: 900px; background: #FFF ">
+        <div class="container-fluid pt-10">
+            <!-- Row -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <form role="form-horizontal" id="noticeForm">
+                        <div class="form-group mt-15">
+                            <label for="noticeTopic" class="col-sm-12 control-label mb-5" style="font-weight:bold">通知主题:</label>
+                            <input type="text" class="form-control" name="noticeTopic" id="noticeTopic" placeholder="请输入主题">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-body" class="col-sm-12 control-label mb-5" style="font-weight:bold">通知内容:</label>
+                            <textarea style="width: 100%" rows="15" id="txt-body" name="noticeBody"></textarea>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="noticeType" class="col-sm-1 control-label" style="font-weight:bold">通知类型:</label>
+                            <div class="col-sm-11">
+                                <label class="radio-inline ">
+                                    <input type="radio" name="noticeType" id="optionsRadios1" value="会议通知" checked>会议通知
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="noticeType" id="optionsRadios2" value="培训通知">
+                                    培训通知
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="noticeType" id="optionsRadios3" value="来访信息">
+                                    来访信息
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="noticeType" id="optionsRadios4" value="拓展成果">
+                                    拓展成果
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-5">
+                            <label for="noticeLevel" class="col-sm-1 control-label" style="font-weight:bold">重要等级:</label>
+                            <div class="col-sm-11">
+                                <label class="radio-inline ">
+                                    <input type="radio" name="noticeLevel" id="optionsRadios1" value="一般" checked>
+                                    一般
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="noticeLevel" id="optionsRadios2" value="重要">
+                                    重要
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="noticeLevel" id="optionsRadios3" value="非常重要">
+                                    非常重要
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-5" style="display: none">
+                            <input type="text" class="form-control" name="publisher"  value="系统管理员">
+                        </div>
+                        <div class="form-group" >
+                            <button type="submit" class="btn  btn-success mr-15 " style="float: right"
+                                onclick="noticeInfoSubmit()">发布</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+    <!-- JavaScript -->
+    <!-- jQuery -->
+    <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

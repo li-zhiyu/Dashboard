@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmContractProductiveMapper">
+
+	<insert id="insert" parameterType="java.util.Map">
+		insert into
+		t_pdm_contract_productive (
+		ID,
+		CONTRACT_ID,
+		PAYMENT_ID,
+		CURRENCY,
+		PAY_DATE,
+		AGENT,
+		PAY_UNIT,
+		MEMO,
+		DIRECT,
+		AMOUNT,
+		PROJECT_ID,
+		INVOICEVALUE,
+		COSTAMOUNT,
+		EnclosureNm,
+		CREATETIME,
+		CREATER,
+		AUDITOR,
+		AUDITTIME,
+		Enclosure)
+		values (
+		#{id,jdbcType=VARCHAR},
+		#{contractId,jdbcType=VARCHAR},
+		#{paymentId,jdbcType=VARCHAR},
+		#{currency,jdbcType=VARCHAR},
+		#{payDate,jdbcType=DATE},
+		#{agent,jdbcType=VARCHAR},
+		#{payUnit,jdbcType=VARCHAR},
+		#{memo,jdbcType=VARCHAR},
+		#{direct,jdbcType=VARCHAR},
+		#{amount,jdbcType=DECIMAL},
+		#{projectId,jdbcType=VARCHAR},
+		#{invoicevalue,jdbcType=DECIMAL},
+		#{costamount,jdbcType=DECIMAL},
+		#{enclosurenm,jdbcType=VARCHAR},
+		#{createtime,jdbcType=TIMESTAMP},
+		#{creater,jdbcType=VARCHAR},
+		#{auditor,jdbcType=VARCHAR},
+		#{audittime,jdbcType=TIMESTAMP},
+		#{enclosure,jdbcType=LONGVARCHAR})
+	</insert>
+
+	<select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+		select ID,
+		CONTRACT_ID,
+		PAYMENT_ID,
+		CURRENCY,
+		PAY_DATE,
+		AGENT,
+		PAY_UNIT,
+		MEMO,
+		DIRECT,
+		AMOUNT,
+		PROJECT_ID,
+		INVOICEVALUE,
+		COSTAMOUNT,
+		EnclosureNm,
+		CREATETIME,
+		CREATER,
+		AUDITOR,
+		AUDITTIME,
+		Enclosure
+
+		from
+		t_pdm_contract_productive
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="id != null and id != ''">
+				AND ID = #{id,jdbcType=VARCHAR}
+			</if>
+			<if test="contractId != null and contractId != ''">
+				AND CONTRACT_ID = #{contractId,jdbcType=VARCHAR}
+			</if>
+			<if test="paymentId != null and paymentId != ''">
+				AND PAYMENT_ID = #{paymentId,jdbcType=VARCHAR}
+			</if>
+			<if test="currency != null and currency != ''">
+				AND CURRENCY = #{currency,jdbcType=VARCHAR}
+			</if>
+			<if test="payDate != null and payDate != ''">
+				AND PAY_DATE = #{payDate,jdbcType=DATE}
+			</if>
+			<if test="agent != null and agent != ''">
+				AND AGENT = #{agent,jdbcType=VARCHAR}
+			</if>
+			<if test="payUnit != null and payUnit != ''">
+				AND PAY_UNIT = #{payUnit,jdbcType=VARCHAR}
+			</if>
+			<if test="memo != null and memo != ''">
+				AND MEMO = #{memo,jdbcType=VARCHAR}
+			</if>
+			<if test="direct != null and direct != ''">
+				AND DIRECT = #{direct,jdbcType=VARCHAR}
+			</if>
+			<if test="amount != null and amount != ''">
+				AND AMOUNT = #{amount,jdbcType=DECIMAL}
+			</if>
+			<if test="projectId != null and projectId != ''">
+				AND PROJECT_ID = #{projectId,jdbcType=VARCHAR}
+			</if>
+			<if test="invoicevalue != null and invoicevalue != ''">
+				AND INVOICEVALUE = #{invoicevalue,jdbcType=DECIMAL}
+			</if>
+			<if test="costamount != null and costamount != ''">
+				AND COSTAMOUNT = #{costamount,jdbcType=DECIMAL}
+			</if>
+			<if test="enclosurenm != null and enclosurenm != ''">
+				AND EnclosureNm = #{enclosurenm,jdbcType=VARCHAR}
+			</if>
+			<if test="createtime != null and createtime != ''">
+				AND CREATETIME = #{createtime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="creater != null and creater != ''">
+				AND CREATER = #{creater,jdbcType=VARCHAR}
+			</if>
+			<if test="auditor != null and auditor != ''">
+				AND AUDITOR = #{auditor,jdbcType=VARCHAR}
+			</if>
+			<if test="audittime != null and audittime != ''">
+				AND AUDITTIME = #{audittime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="enclosure != null and enclosure != ''">
+				AND Enclosure = #{enclosure,jdbcType=LONGVARCHAR}
+			</if>
+		</trim>
+	</select>
+
+	<select id="queryAmount" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select SUM(AMOUNT) as AMOUNTSUM
+
+		from t_pdm_contract_productive
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="invoicevalue != null and invoicevalue != ''">
+				AND INVOICEVALUE = #{invoicevalue,jdbcType=DECIMAL}
+			</if>
+			<if
+				test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+				AND PAY_DATE Between #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+			</if>
+		</trim>
+	</select>
+
+	<select id="queryInvoicevalue" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		select SUM(INVOICEVALUE) as INVOICEVALUESUM
+
+		from t_pdm_contract_productive
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="amount != null and amount != ''">
+				AND AMOUNT = #{amount,jdbcType=DECIMAL}
+			</if>
+			<if
+				test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+				AND PAY_DATE Between #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+			</if>
+		</trim>
+	</select>
+	
+		<select id="queryAmountDetail" parameterType="java.util.Map"
+		resultType="java.util.Map">
+        select  b.CONTRACT_NM, 
+            DATE_FORMAT(a.PAY_DATE,'%Y-%m-%d') PAY_DATE,  
+            a.PAY_UNIT,  
+            a.AMOUNT
+            
+        from t_pdm_contract_productive a LEFT JOIN t_pdm_contract b ON a.CONTRACT_ID=b.ID
+		
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			AND a.INVOICEVALUE = 0
+			<if
+				test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+				AND a.PAY_DATE Between #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+			</if>
+		</trim>
+	</select>
+	
+		<select id="queryInvoicevalueDetail" parameterType="java.util.Map"
+		resultType="java.util.Map">
+        select  b.CONTRACT_NM, 
+            DATE_FORMAT(a.PAY_DATE,'%Y-%m-%d') PAY_DATE,  
+            a.PAY_UNIT,  
+            a.INVOICEVALUE
+            
+        from t_pdm_contract_productive a LEFT JOIN t_pdm_contract b ON a.CONTRACT_ID=b.ID
+		<trim prefix="WHERE" prefixOverrides="AND|OR">		
+			AND a.AMOUNT = 0
+			<if
+				test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+				AND a.PAY_DATE Between #{startDate,jdbcType=DATE} And #{endDate,jdbcType=DATE}
+			</if>
+		</trim>
+	</select>
+</mapper>

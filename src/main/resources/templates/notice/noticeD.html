@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>pdm-notice</title>
+    <meta http-equiv="refresh" content="60">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Custom CSS -->
+    <link href="/dist/css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body id="ext-element-1" style="overflow: auto" class="x-body x-webkit x-chrome x-desktop x-scroller">
+    <div style="min-height: 914px; background: #FFF ">
+        <div class="container-fluid pt-10">
+            <!-- Row -->
+            <div class="row">
+                <div th:each="emp : ${empList}" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="panel panel-default card-view panel-refresh" style="height: 300px">
+                        <div class="panel-heading" style="padding-left:20px;padding-top:5px;padding-bottom:5px">
+                            <div class="pull-left" th:switch=${emp.LEVEL}>
+                                <h6 th:case="非常重要" class="panel-title txt-info" th:text="${emp.TYPE}"></h6>
+                                <h6 th:case="重要" class="panel-title txt-primary" th:text="${emp.TYPE}"></h6>
+                                <h6 th:case="一般" class="panel-title txt-success" th:text="${emp.TYPE}"></h6>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0" th:utext="${emp.BODY}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Row -->
+    </div>
+    <!-- JavaScript -->
+    <!-- jQuery -->
+    <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

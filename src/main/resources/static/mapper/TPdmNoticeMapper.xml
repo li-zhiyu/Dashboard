@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdrawin.pdm.dashboard.mapper.TPdmNoticeMapper">
+
+    <delete id="delete" parameterType="java.util.Map">
+        delete from t_pdm_notice
+        where ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="java.util.Map">
+        insert into t_pdm_notice (
+            ID, 
+            TOPIC, 
+            TYPE, 
+            LEVEL, 
+            PUBLISH_DATE, 
+            PUBLISHER, 
+            BODY)
+        values (
+            #{id,jdbcType=VARCHAR}, 
+            #{topic,jdbcType=VARCHAR}, 
+            #{type,jdbcType=VARCHAR}, 
+            #{level,jdbcType=VARCHAR}, 
+            #{publishDate,jdbcType=TIMESTAMP}, 
+            #{publisher,jdbcType=VARCHAR}, 
+            #{body,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <update id="update" parameterType="java.util.Map">
+        update t_pdm_notice
+        <set>
+            <if test="topic != null">
+                TOPIC = #{topic,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                LEVEL = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="publishDate != null">
+                PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="publisher != null">
+                PUBLISHER = #{publisher,jdbcType=VARCHAR},
+            </if>
+            <if test="body != null">
+                BODY = #{body,jdbcType=LONGVARCHAR}
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="get" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            TOPIC, 
+            TYPE, 
+            LEVEL, 
+            PUBLISH_DATE, 
+            PUBLISHER, 
+            BODY
+            
+        from t_pdm_notice
+        where ID = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="query" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            TOPIC, 
+            TYPE, 
+            LEVEL, 
+            DATE_FORMAT(PUBLISH_DATE,'%Y-%m-%d %H:%m:%s') PUBLISH_DATE, 
+            PUBLISHER, 
+            BODY
+            
+        from t_pdm_notice        
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id != null and id != ''">
+                AND ID = #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="topic != null and topic != ''">
+                AND TOPIC = #{topic,jdbcType=VARCHAR}
+            </if>
+            <if test="type != null and type != ''">
+                AND TYPE = #{type,jdbcType=VARCHAR}
+            </if>
+            <if test="level != null and level != ''">
+                AND LEVEL = #{level,jdbcType=VARCHAR}
+            </if>
+            <if test="publishDate != null and publishDate != ''">
+                AND PUBLISH_DATE = #{publishDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="publisher != null and publisher != ''">
+                AND PUBLISHER = #{publisher,jdbcType=VARCHAR}
+            </if>
+            <if test="body != null and body != ''">
+                AND BODY = #{body,jdbcType=LONGVARCHAR}
+            </if>
+        </trim>
+        order by PUBLISH_DATE  desc
+    </select>
+</mapper>
