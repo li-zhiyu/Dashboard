@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Droopy I Fast build Admin dashboard for any platform</title>
+    <title>公告栏维护</title>
     <meta name="description" content="Droopy is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords"
         content="admin, admin dashboard, admin template, cms, crm, Droopy Admin, Droopyadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="/js/kindeditor/themes/default/default.css" />
     <link rel="stylesheet" href="/js/kindeditor/themes/simple/simple.css" />
     <link rel="stylesheet" href="/js/kindeditor/plugins/autoheight/autoheight.js" />
+
+
     <!-- KindEditor JavaScript -->
     <script src="/js/kindeditor/kindeditor-all-min.js"></script>
     <script src="/js/kindeditor/lang/zh-CN.js"></script>
@@ -40,6 +42,7 @@
 
     <script type="text/javascript" src="/js/ext/ext-all.js"></script>
     <script src="/myjs/notice.js"></script>
+    <script src="/myjs/userSelect.js"></script>
 
     <style type="text/css">
         thead tr th {
@@ -105,9 +108,9 @@
                                 <textarea style="width: 100%" rows="20" id="txt-body" name="noticeBody"></textarea>
                             </div>
                             <div class="form-group mb-5">
-                                <label for="noticeType" class="col-sm-2 control-label"
+                                <label for="noticeType" class="col-sm-3 control-label"
                                     style="font-weight:bold">通知类型:</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                     <label class="radio-inline ">
                                         <input type="radio" name="noticeType" id="optionsRadios1" value="会议通知"
                                             checked>会议通知
@@ -127,9 +130,9 @@
                                 </div>
                             </div>
                             <div class="form-group mb-5">
-                                <label for="noticeLevel" class="col-sm-2 control-label"
+                                <label for="noticeLevel" class="col-sm-3 control-label"
                                     style="font-weight:bold">重要等级:</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                     <label class="radio-inline ">
                                         <input type="radio" name="noticeLevel" id="optionsRadios1" value="一般" checked>
                                         一般
@@ -143,6 +146,15 @@
                                         非常重要
                                     </label>
                                 </div>
+                            </div>
+                            <div form-group mb-5>
+                                <label class="col-sm-2 control-label" style="font-weight:bold">审核人:</label>
+                                <select class="col-sm-2 form-control">
+                                    <option>易小红</option>
+                                    <option>谢志成</option>
+                                    <option>张贤超</option>
+                                    <option>周龙</option>
+                                </select>
                             </div>
                             <div class="form-group mb-5" style="display: none">
                                 <input type="text" class="form-control" name="publisher" th:value="${userName}">
@@ -179,20 +191,20 @@
                     <div class="col-sm-12">
                         <form role="form-horizontal" id="noticeForm2">
                             <div class="form-group mt-15">
-                                <label for="noticeTopic" class="col-sm-12 control-label mb-5"
+                                <label for="noticeTopic" class="col-sm-3 control-label mb-5"
                                     style="font-weight:bold">通知主题:</label>
-                                <input type="text" class="form-control" name="noticeTopic" id="noticeTopic2"
+                                <input type="text" class="form-control input-sm" name="noticeTopic" id="noticeTopic2"
                                     placeholder="请输入主题">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-15">
                                 <label for="txt-body" class="col-sm-12 control-label mb-5"
                                     style="font-weight:bold">通知内容:</label>
                                 <textarea style="width: 100%" rows="20" id="txt-body2" name="noticeBody"></textarea>
                             </div>
-                            <div class="form-group mb-5">
-                                <label for="noticeType" class="col-sm-2 control-label"
+                            <div class="form-group mt-15">
+                                <label for="noticeType" class="col-sm-3 control-label"
                                     style="font-weight:bold">通知类型:</label>
-                                <div class="col-sm-10">
+                                <div>
                                     <label class="radio-inline ">
                                         <input type="radio" name="noticeType" id="2optionsRadios1" value="会议通知"
                                             checked>会议通知
@@ -211,10 +223,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group mb-5">
-                                <label for="noticeLevel" class="col-sm-2 control-label"
+                            <div class="form-group mt-15">
+                                <label for="noticeLevel" class="col-sm-3 control-label"
                                     style="font-weight:bold">重要等级:</label>
-                                <div class="col-sm-10">
+                                <div>
                                     <label class="radio-inline ">
                                         <input type="radio" name="noticeLevel" id="2optionsRadios1" value="一般" checked>
                                         一般
@@ -229,7 +241,25 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group mb-5" style="display: none">
+                            <div class="form-group mt-15">
+                                <label class="col-sm-3 control-label" for="reviewer"
+                                    style="font-weight:bold">审核人:</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control input-sm " id="reviewer" name="reviewer">
+                                        <option>易小红</option>
+                                        <option>谢志成</option>
+                                        <option>张贤超</option>
+                                        <option>周龙</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mt-15">
+                                    <label for="userChoose" class="col-sm-12 control-label mb-5"
+                                        style="font-weight:bold">抄送:</label>
+                                    <input type="text" class="form-control input-sm" name="userChoose" id="userChoose"
+                                        placeholder="双击选择" ondblclick="openUserChoose()">
+                                </div>
+                            <div class="form-group mt-15" style="display: none">
                                 <input type="text" class="form-control" name="publisher" th:value="${userName}">
                             </div>
                         </form>
@@ -245,30 +275,30 @@
 
     <!-- bootstrap 删除确认模态框 -->
     <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            公告删除
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        确定要删除公告吗？
-                    </div>
-                    <input type="hidden" id="selectId" value="">
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                        </button>
-                        <button type="button" class="btn btn-primary" onclick="DeleteNotice()"> 
-                            确定
-                        </button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        公告删除
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    确定要删除公告吗？
+                </div>
+                <input type="hidden" id="selectId" value="">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="DeleteNotice()">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 
     <!-- bootstrap toolbar -->
     <div class="ml-10 " id="toolbar">

@@ -15,7 +15,11 @@
             LEVEL, 
             PUBLISH_DATE, 
             PUBLISHER, 
-            BODY)
+            BODY,
+            REVIEWER,
+            STATE,
+            REMARK,
+            READER)
         values (
             #{id,jdbcType=VARCHAR}, 
             #{topic,jdbcType=VARCHAR}, 
@@ -23,7 +27,11 @@
             #{level,jdbcType=VARCHAR}, 
             #{publishDate,jdbcType=TIMESTAMP}, 
             #{publisher,jdbcType=VARCHAR}, 
-            #{body,jdbcType=LONGVARCHAR})
+            #{body,jdbcType=LONGVARCHAR},
+            #{reviewer,jdbcType=VARCHAR},
+            #{state,jdbcType=VARCHAR},
+            #{remark,jdbcType=VARCHAR},
+            #{reader,jdbcType=LONGVARCHAR})
     </insert>
 
     <update id="update" parameterType="java.util.Map">
@@ -45,7 +53,29 @@
                 PUBLISHER = #{publisher,jdbcType=VARCHAR},
             </if>
             <if test="body != null">
-                BODY = #{body,jdbcType=LONGVARCHAR}
+                BODY = #{body,jdbcType=LONGVARCHAR},
+            </if>
+             <if test="reviewer != null">
+                REVIEWER = #{reviewer,jdbcType=VARCHAR},
+            </if>
+             <if test="state != null">
+                STATE = #{state,jdbcType=VARCHAR},
+            </if>
+             <if test="remark != null">
+                REMARK = #{remark,jdbcType=VARCHAR},
+            </if>
+             <if test="reader != null">
+                READER = #{reader,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+    
+    <update id="updateNoticeReader" parameterType="java.util.Map">
+        update t_pdm_notice
+        <set>
+             <if test="reader != null">
+                READER = REPLACE(READER,#{reader,jdbcType=VARCHAR},CONCAT(#{reader,jdbcType=VARCHAR},'（已阅）'))
             </if>
         </set>
         where ID = #{id,jdbcType=VARCHAR}
@@ -58,7 +88,11 @@
             LEVEL, 
             PUBLISH_DATE, 
             PUBLISHER, 
-            BODY
+            BODY,
+            REVIEWER,
+            STATE,
+            REMARK,
+            READER
             
         from t_pdm_notice
         where ID = #{id,jdbcType=VARCHAR}
@@ -69,9 +103,13 @@
             TOPIC, 
             TYPE, 
             LEVEL, 
-            DATE_FORMAT(PUBLISH_DATE,'%Y-%m-%d %H:%m:%s') PUBLISH_DATE, 
+            DATE_FORMAT(PUBLISH_DATE,'%Y-%m-%d %H:%i:%s') PUBLISH_DATE, 
             PUBLISHER, 
-            BODY
+            BODY,
+            REVIEWER,
+            STATE,
+            REMARK,
+            READER
             
         from t_pdm_notice        
         <trim prefix="WHERE" prefixOverrides="AND|OR">
@@ -95,6 +133,44 @@
             </if>
             <if test="body != null and body != ''">
                 AND BODY = #{body,jdbcType=LONGVARCHAR}
+            </if>
+             <if test="reviewer != null and reviewer !=''">
+                AND REVIEWER = #{reviewer,jdbcType=VARCHAR}
+            </if>
+             <if test="state != null and state !=''">
+                AND STATE = #{state,jdbcType=VARCHAR}
+            </if>
+             <if test="remark != null and remark !=''">
+                AND REMARK = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="reader != null and reader !=''">
+                AND READER = #{reader,jdbcType=VARCHAR}
+            </if>
+        </trim>
+        order by PUBLISH_DATE  desc
+    </select>
+    
+    <select id="queryReaderByUserNm" parameterType="java.util.Map" resultType="java.util.Map">
+        select ID, 
+            TOPIC, 
+            TYPE, 
+            LEVEL, 
+            DATE_FORMAT(PUBLISH_DATE,'%Y-%m-%d %H:%i:%s') PUBLISH_DATE, 
+            PUBLISHER, 
+            BODY,
+            REVIEWER,
+            STATE,
+            REMARK,
+            READER
+            
+        from t_pdm_notice        
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="state != null and state !=''">
+                AND STATE = #{state,jdbcType=VARCHAR}
+            </if>
+            <if test="reader != null and reader !=''">
+                AND READER like CONCAT('%',#{reader,jdbcType=VARCHAR},'%')
+                AND READER not like CONCAT('%',#{reader,jdbcType=VARCHAR},'（已阅）%')
             </if>
         </trim>
         order by PUBLISH_DATE  desc

@@ -13,4 +13,8 @@ public interface TPdmNoticeMapper {
     List<Map> query(Map map);
 
     int update(Map map);
+    
+    int updateNoticeReader(Map map);
+    
+    List<Map> queryReaderByUserNm(Map map);
 }

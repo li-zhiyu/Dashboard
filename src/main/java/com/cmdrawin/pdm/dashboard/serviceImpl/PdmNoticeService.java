@@ -35,5 +35,13 @@ public class PdmNoticeService implements IPdmNoticeService {
 	public List<Map> query(Map map) {
 		return tPdmNoticeMapper.query(map);
 	}
+	
+	public Integer updateNoticeReader(Map map) {
+		return tPdmNoticeMapper.updateNoticeReader(map);
+	}
+	
+	public List<Map> queryReaderByUserNm(Map map) {
+		return tPdmNoticeMapper.queryReaderByUserNm(map);
+	}
 
 }

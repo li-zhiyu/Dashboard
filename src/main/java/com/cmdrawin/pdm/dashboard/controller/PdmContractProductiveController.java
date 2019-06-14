@@ -70,6 +70,16 @@ public class PdmContractProductiveController extends ExtJSBaseController {
 		allResultMap.put("currentYear", resultMap.get(0)!=null? resultMap.get(0).get("AMOUNTSUM"):0);//本年
 		
 		par_in.clear();
+		resultMap.clear();
+		startTime="2010-01-01 01:01:01";
+		endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		par_in.put("invoicevalue", 0);
+		resultMap=pdmContractProductiveService.queryAmount(par_in);
+		allResultMap.put("all", resultMap.get(0)!=null? resultMap.get(0).get("AMOUNTSUM"):0);//累计
+		
+		par_in.clear();
 		par_in.put("tgname", "营业收入");
 		Calendar cal=Calendar.getInstance();      
 		int year=cal.get(Calendar.YEAR); 
@@ -126,6 +136,16 @@ public class PdmContractProductiveController extends ExtJSBaseController {
 		par_in.put("amount", 0);
 		resultMap=pdmContractProductiveService.queryInvoicevalue(par_in);
 		allResultMap.put("currentYear", resultMap.get(0)!=null? resultMap.get(0).get("INVOICEVALUESUM"):0);//本年
+		
+		par_in.clear();
+		resultMap.clear();
+		startTime="2010-01-01 01:01:01";
+		endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		par_in.put("amount", 0);
+		resultMap=pdmContractProductiveService.queryInvoicevalue(par_in);
+		allResultMap.put("all", resultMap.get(0)!=null? resultMap.get(0).get("INVOICEVALUESUM"):0);//累计
 		
 		par_in.clear();
 		par_in.put("tgname", "自评收入");
@@ -200,6 +220,25 @@ public class PdmContractProductiveController extends ExtJSBaseController {
 		}
 	}
 	
+	@RequestMapping(value = "/getContractProductiveConfirmAll")
+	public void getContractProductiveConfirmAll(HttpServletRequest request, HttpServletResponse response)throws IOException{
+		Map<String, Object> par_in = new HashMap<String, Object>();
+		Map allResultMap =new HashMap<String, String>();
+		
+		String startTime="2010-01-01 01:01:01";
+		String endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		par_in.put("invoicevalue", 0);
+		List<Map> resultMap=pdmContractProductiveService.queryAmountDetail(par_in);
+		try {
+				writeJSON(response, resultMap);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping(value = "/getContractProductiveEvaluateByYear")
 	public void getContractProductiveEvaluateByYear(HttpServletRequest request, HttpServletResponse response)throws IOException{
 		Map<String, Object> par_in = new HashMap<String, Object>();
@@ -207,6 +246,25 @@ public class PdmContractProductiveController extends ExtJSBaseController {
 		
 		String startTime=DateUtil.getCurrentYearStartTime();
 		String endTime=DateUtil.getCurrentYearEndTime();
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		par_in.put("amount", 0);
+		List<Map> resultMap=pdmContractProductiveService.queryInvoicevalueDetail(par_in);
+		try {
+				writeJSON(response, resultMap);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value = "/getContractProductiveEvaluateAll")
+	public void getContractProductiveEvaluateAll(HttpServletRequest request, HttpServletResponse response)throws IOException{
+		Map<String, Object> par_in = new HashMap<String, Object>();
+		Map allResultMap =new HashMap<String, String>();
+		
+		String startTime="2010-01-01 01:01:01";
+		String endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
 		par_in.put("startDate", startTime);
 		par_in.put("endDate", endTime);
 		par_in.put("amount", 0);

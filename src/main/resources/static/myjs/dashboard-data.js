@@ -76,6 +76,7 @@ var echartsConfig = function() {
 				myChart.setOption(contractOption(respText));
 				myChart.resize();
 				myChart.hideLoading();
+				document.getElementById("refund-all").innerHTML=respText.all+" 万元";
 				document.getElementById("refund-currentQuarter").innerHTML=respText.currentQuarter+" 万元";
 				document.getElementById("refund-currentMonth").innerHTML=respText.currentMonth+" 万元";
 				document.getElementById("refund-lastMonth").innerHTML=respText.lastMonth+" 万元";
@@ -121,6 +122,7 @@ var echartsConfig = function() {
 				myChart.setOption(OVConfirmOption(respText));
 				myChart.resize();
 				myChart.hideLoading();
+				document.getElementById("OV-confirm-all").innerHTML=respText.all+" 万元";
 				document.getElementById("OV-confirm-currentQuarter").innerHTML=respText.currentQuarter+" 万元";
 				document.getElementById("OV-confirm-currentMonth").innerHTML=respText.currentMonth+" 万元";
 				document.getElementById("OV-confirm-lastMonth").innerHTML=respText.lastMonth+" 万元";
@@ -165,6 +167,7 @@ var echartsConfig = function() {
 				myChart.setOption(OVSelfEvaOption(respText));
 				myChart.resize();
 				myChart.hideLoading();
+				document.getElementById("OV-SelfEva-all").innerHTML=respText.all+" 万元";
 				document.getElementById("OV-SelfEva-currentQuarter").innerHTML=respText.currentQuarter+" 万元";
 				document.getElementById("OV-SelfEva-currentMonth").innerHTML=respText.currentMonth+" 万元";
 				document.getElementById("OV-SelfEva-lastMonth").innerHTML=respText.lastMonth+" 万元";
@@ -209,6 +212,7 @@ var echartsConfig = function() {
 				myChart.setOption(SignOption(respText));
 				myChart.resize();
 				myChart.hideLoading();
+				document.getElementById("sign-all").innerHTML=respText.all+" 万元";
 				document.getElementById("sign-currentQuarter").innerHTML=respText.currentQuarter+" 万元";
 				document.getElementById("sign-currentMonth").innerHTML=respText.currentMonth+" 万元";
 				document.getElementById("sign-lastMonth").innerHTML=respText.lastMonth+" 万元";

@@ -35,6 +35,11 @@ public class DashboardIndexController {
         return "contractSign/table-ContractSignByYear";
     }
     
+    @RequestMapping(value = "/ContractSignAll", method = RequestMethod.GET)
+    public String ContractSignAll() {
+        return "contractSign/table-ContractSignAll";
+    }
+    
     @RequestMapping(value = "/ContractSignByMonth", method = RequestMethod.GET)
     public String ContractSignByMonth() {
         return "contractSign/table-ContractSignByMonth";
@@ -48,6 +53,11 @@ public class DashboardIndexController {
     @RequestMapping(value = "/ContractRefundByYear", method = RequestMethod.GET)
     public String ContractRefundByYear() {
         return "contractRefund/table-ContractRefundByYear";
+    }
+    
+    @RequestMapping(value = "/ContractRefundAll", method = RequestMethod.GET)
+    public String ContractRefundAll() {
+        return "contractRefund/table-ContractRefundAll";
     }
     
     @RequestMapping(value = "/ContractRefundByMonth", method = RequestMethod.GET)
@@ -70,6 +80,11 @@ public class DashboardIndexController {
         return "OV-Confirm/table-OVConfirmByYear";
     }
     
+    @RequestMapping(value = "/OVConfirmAll", method = RequestMethod.GET)
+    public String OVConfirmAll() {
+        return "OV-Confirm/table-OVConfirmAll";
+    }
+    
     @RequestMapping(value = "/OVSelfEvaByMonth", method = RequestMethod.GET)
     public String OVSelfEvaByMonth() {
         return "OV-SelfEva/table-OVSelfEvaByMonth";
@@ -83,5 +98,10 @@ public class DashboardIndexController {
     @RequestMapping(value = "/OVSelfEvaByYear", method = RequestMethod.GET)
     public String OVSelfEvaByYear() {
         return "OV-SelfEva/table-OVSelfEvaByYear";
+    }
+    
+    @RequestMapping(value = "/OVSelfEvaAll", method = RequestMethod.GET)
+    public String OVSelfEvaAll() {
+        return "OV-SelfEva/table-OVSelfEvaAll";
     }
 }

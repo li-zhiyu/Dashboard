@@ -10,4 +10,6 @@ public interface IPdmNoticeService {
 	public Integer update(Map map);
 	public Map get(Map map);
 	public List<Map> query(Map map);
+	public Integer updateNoticeReader(Map map);
+	public List<Map> queryReaderByUserNm(Map map);
 }

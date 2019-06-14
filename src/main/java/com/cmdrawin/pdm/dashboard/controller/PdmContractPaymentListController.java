@@ -135,6 +135,15 @@ public class PdmContractPaymentListController extends ExtJSBaseController {
 		allResultMap.put("currentYear", resultMap.get(0)!=null? resultMap.get(0).get("AMOUNTSUM"):0);//本年
 		
 		par_in.clear();
+		resultMap.clear();
+		startTime="2010-01-01 01:01:01";
+		endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		resultMap=pdmContractPaymentListService.queryAmount(par_in);
+		allResultMap.put("all", resultMap.get(0)!=null? resultMap.get(0).get("AMOUNTSUM"):0);//累计
+		
+		par_in.clear();
 		par_in.put("tgname", "回款额");
 		Calendar cal=Calendar.getInstance();      
 		int year=cal.get(Calendar.YEAR); 
@@ -179,6 +188,25 @@ public class PdmContractPaymentListController extends ExtJSBaseController {
 		
 		String startTime=DateUtil.getCurrentYearStartTime();
 		String endTime=DateUtil.getCurrentYearEndTime();
+		par_in.put("startDate", startTime);
+		par_in.put("endDate", endTime);
+		List<Map> resultMap=pdmContractPaymentListService.queryDetail(par_in);
+			
+		try {
+				writeJSON(response, resultMap);	
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value = "/getContractRefundAll")
+	public void getContractRefundAll(HttpServletRequest request, HttpServletResponse response)throws IOException{
+		Map par_in = new HashMap<String, String>();
+		Map allResultMap =new HashMap<String, String>();
+		
+		String startTime="2010-01-01 01:01:01";
+		String endTime=DateUtil.getCurrentTime("yyyy-MM-dd HH:mm:ss");
 		par_in.put("startDate", startTime);
 		par_in.put("endDate", endTime);
 		List<Map> resultMap=pdmContractPaymentListService.queryDetail(par_in);

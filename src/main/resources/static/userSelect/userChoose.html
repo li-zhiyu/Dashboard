@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link href="/css/userSelect/jq22.css" type="text/css" rel="stylesheet">   
+<link href="/css/ztree/zTreeStyle.css" rel="stylesheet">
+<link href="/css/userSelect/address.css" rel="stylesheet">
+<link href="/css/userSelect/toolbar_.css" rel="stylesheet">    
+
+    
+<script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/js/ztree/jquery.ztree.all.min.js"></script>
+<script src="/js/layer/layer.js"></script>
+</head>
+<body>
+
+<ul id="tabs">
+    <li><a href="#" title="tab1">组织架构</a></li>
+    <li><a href="#" title="tab2">岗位角色</a></li>
+    <li><a href="#" title="tab3">历史默认</a></li>
+</ul>
+
+<div id="content">
+    <div id="tab1" style ="height: 100%">
+
+        <div class="lui-address-panel-nav lui-component" data-lui-mark="lui-address-panel-nav" id="lui-id-23" data-lui-cid="lui-id-23">
+            <ul class="lui-address-panel-nav-ul">
+            </ul>
+            <div class="lui-address-nav-search" data-lui-mark="lui-nav-search">
+                <div class="lui-address-nav-searchbar">
+                    <input class="lui-form-control" type="text" data-lui-mark="lui-nav-search-input" placeholder="请输入关键字" />
+                    <div class="lui-address-nav-searchcancel" data-lui-mark="lui-nav-search-cancel"></div>
+                    <button type="button" data-lui-mark="lui-nav-search-btn"></button>
+                </div>
+            </div>
+        </div>
+        <div class="zTreeDemoBackground left">
+
+            <div class="lui-address-panel-contentWrap">
+                <div class="lui-address-panel-contentArea">
+                    <div class="lui-address-panel-left">
+                        <div class="innerbar lui-component" data-lui-mark="lui-address-panel-left" id="lui-id-28" data-lui-cid="lui-id-28">
+                            <ul id="treeOrg" class="ztree"></ul>
+                        </div>
+                        <div class="lui-address-quciklocate-searchbar">
+                            <input class="lui-form-control" data-lui-mark="lui-quciklocate-search-input" placeholder="请输入部门" type="text" />
+                            <button type="button" data-lui-mark="lui-quciklocate-search-btn"></button>
+                        </div>
+                    </div>
+                    <div class="lui-address-panel-right">
+                        <div class="innerbar lui-component" data-lui-mark="lui-address-panel-right" id="lui-id-26" data-lui-cid="lui-id-26">
+                            <div ><input  type="checkbox" id ='selectAll' style ='vertical-align:middle;' ><label for="selectAll" style ='vertical-align:middle;'>全部</label></div>
+
+                            <ul id="treeUser"class="ztree lui-address-panel-selectlist">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab2"><div class="zTreeDemoBackground left">
+
+        <div class="lui-address-panel-contentWrap">
+            <div class="lui-address-panel-contentArea">
+                <!--<div class="lui-address-panel-left" style="width: 33%">-->
+                    <!--<div class="innerbar lui-component" style="height: 310px" data-lui-mark="lui-address-panel-left" id="lui-id-29" data-lui-cid="lui-id-29">-->
+                        <!--<ul id="treeOrg2" class="ztree"></ul>-->
+                    <!--</div>-->
+                    <!--<div class="lui-address-quciklocate-searchbar">-->
+                        <!--<input class="lui-form-control" data-lui-mark="lui-quciklocate-search-input" placeholder="请输入部门" type="text" />-->
+                        <!--<button type="button" data-lui-mark="lui-quciklocate-search-btn"></button>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="lui-address-panel-left" style="width: 33%">
+                    <div class="innerbar lui-component"  style="height: 310px"  data-lui-mark="lui-address-panel-left" id="lui-id-31" data-lui-cid="lui-id-31">
+                        <ul id="treeOrg2" class="ztree"></ul>
+                    </div>
+                </div>
+
+                <div class="lui-address-panel-left" style="width: 33%">
+                    <div class="innerbar lui-component"  style="height: 310px"  data-lui-mark="lui-address-panel-left" id="lui-id-31" data-lui-cid="lui-id-31">
+                        <ul id="treeRole" class="ztree"></ul>
+                    </div>
+                </div>
+                <div class="lui-address-panel-right" style="width: 33%">
+                    <div class="innerbar lui-component"  style="height: 310px"  data-lui-mark="lui-address-panel-right" id="lui-id-32" data-lui-cid="lui-id-32">
+                        <div ><input  type="checkbox" id ='selectAll2' style ='vertical-align:middle;' ><label for="selectAll" style ='vertical-align:middle;'>全部</label></div>
+                        <ul id="treeUser2" class="ztree lui-address-panel-selectlist">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    
+      <!--tab3 start -->	
+	<div id="tab3"><div class="zTreeDemoBackground left">
+        <div class="lui-address-panel-contentWrap">
+            <div class="lui-address-panel-contentArea">
+                <div class="lui-address-panel-right" style="width: 100%">
+                    <div class="innerbar lui-component"  style="height: 310px"  data-lui-mark="lui-address-panel-right" id="lui-id-32" data-lui-cid="lui-id-32">
+                        <div ><input  type="checkbox" id ='selectAll3' style ='vertical-align:middle;' ><label for="selectAll" style ='vertical-align:middle;'>全部</label></div>
+                        <ul id="treeUser3" class="ztree lui-address-panel-selectlist">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+	  <!--tab3 end -->	
+</div>
+
+<div class="lui-address-selectedbox"  data-lui-mark="address.selectedbox">
+    <div id="lui-id-8" class="lui-component selectedbox-for-common" data-lui-cid="lui-id-8">
+        <div class="lui-address-selectedbox-delall" data-lui-mark="lui-address-selectedbox-delall" title="清空" style="display: block;"></div>
+        <ul  id = "userChecked" style="max-height:75px;overflow: hidden;" class="lui-address-selectedbox-ul ui-sortable" data-lui-mark="lui-address-selectedbox-ul">
+        </ul>
+    </div>
+</div>
+
+
+<div class="lui-address-buttons" data-lui-mark="address.buttons">
+    <div id="lui-id-10" class="lui-component" data-lui-cid="lui-id-10">
+        <div class="lui_address_buttons_container">
+            <div id="lui-id-11" class="lui-component lui_widget_btn lui_toolbar_btn_def" data-lui-cid="lui-id-11" style="display: inline-block; margin: 0px 10px;" title="确定" tabindex="0">
+                <div class="lui_toolbar_btn_l" data-lui-mark="toolbar_button_inner">
+                    <div class="lui_toolbar_btn_r" id ="btn_ok">
+                        <div class="lui_toolbar_btn_c" data-lui-mark="toolbar_button_content">
+                            <div id="lui-id-12" class="lui-component lui_widget_btn_txt" data-lui-cid="lui-id-12" basetext="确定">
+                                确定
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="lui-id-13" class="lui-component lui_widget_btn lui_toolbar_btn_gray" data-lui-cid="lui-id-13" style="display: inline-block; margin: 0px 10px;" title="取消" tabindex="0">
+                <div class="lui_toolbar_btn_l" data-lui-mark="toolbar_button_inner">
+                    <div class="lui_toolbar_btn_r" id ="btn_cancel">
+                        <div class="lui_toolbar_btn_c" data-lui-mark="toolbar_button_content">
+                            <div id="lui-id-14" class="lui-component lui_widget_btn_txt" data-lui-cid="lui-id-14">
+                                取消
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var setting = {
+        data: {
+            key: {
+                title:"t"
+            },
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onClick: onClick
+        }
+    };
+
+    var setting2 = {
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            onCheck: onCheck
+        }
+    };
+
+    function onClick(event, treeId, treeNode, clickFlag) {
+        if(treeId=="treeOrg") {
+            creatOrgli(treeNode);
+            loadUser(treeNode.id,'');
+        }
+        else if(treeId=="treeOrg2") {
+            loadRole(treeNode.id);
+        }
+        else if(treeId=="treeRole") {
+            var treeOrg2 = $.fn.zTree.getZTreeObj("treeOrg2");
+            var nodes = treeOrg2.getSelectedNodes();
+            if(nodes.length==1) {
+                loadUserByRole(nodes[0].id,treeNode.id);
+            }
+        }
+    }
+
+    function onCheck(e, treeId, treeNode){
+        if(treeId=="treeUser") {
+            if(treeNode.checked){
+                _chkUserList.adduser(treeNode);
+            }else{
+                _chkUserList.deluser(treeNode.id);
+            }
+            setCheckAll();
+        }else if(treeId=="treeUser2") {
+            if(treeNode.checked){
+                _chkUserList.adduser(treeNode);
+            }else{
+                _chkUserList.deluser(treeNode.id);
+            }
+            setCheckAllRole();
+        }else if(treeId=="treeUser3") {
+            if(treeNode.checked){
+                _chkUserList.adduser(treeNode);
+            }else{
+                _chkUserList.deluser(treeNode.id);
+            }
+            setCheckAll3();
+        }
+    }
+
+    function getTime() {
+        var now= new Date(),
+            h=now.getHours(),
+            m=now.getMinutes(),
+            s=now.getSeconds();
+        return (h+":"+m+":"+s);
+    }
+
+    function creatOrgli(treeNode) {
+        $('ul.lui-address-panel-nav-ul').empty();
+        addOrgli(treeNode);
+    }
+
+    function addOrgli(treeNode) {
+        $('ul.lui-address-panel-nav-ul').prepend('<li class="divide"></li>');
+        $('ul.lui-address-panel-nav-ul').prepend('<li class="lui-address-panel-nav-li" title="'+treeNode.name+'" data-lui-selectid="'+treeNode.id+'">'+treeNode.name+'</li>');
+
+        if(treeNode.getParentNode()){
+            addOrgli(treeNode.getParentNode());
+        }
+    }
+
+    var _chkUserList=[];
+    //function
+    Array.prototype.adduser = function(val)
+    {
+        if(val==null){return false;}
+        var index = -1;
+        for (var i = 0; i < this.length; i++) {
+            if (this[i].id == val.id) return false;
+        }
+        this.push(val);
+        adduser(val);
+
+        /*if(checknum&&this.length==checknum&&checknum==1){
+            var rstlist=[];
+            rstlist.push({id:_chkUserList[0].id,name:_chkUserList[0].name});
+            parent.setLayerRst(rstlist);
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            parent.layer.close(index);
+            return;
+        }*/
+    }
+
+    Array.prototype.deluser = function(val)
+    {
+        deluser(val);
+    }
+
+    function adduser(user){
+        $("#userChecked").append('<li draggable="false" data-lui-selectid="'+user.id+'" title="'+user.name+'">'+
+            '<div class="lui-address-selectedbox-del" style="display: none;"></div>'+
+            '<div class="lui-address-selectedbox-img">'+
+            '<img src="/css/userSelect/img/readUserIcon.png">'+
+            '<div class="lui-address-overlay-g"></div>'+
+            '</div>'+
+            '<div class="name">'+user.name+'</div>'+
+            '</li>');
+
+        $('#lui-id-12').html($('#lui-id-12').attr('basetext')+"("+_chkUserList.length+")");
+    }
+    function deluser(userid){
+
+        if(userid==null){return false;}
+        var index = -1;
+        for (var i = 0; i < _chkUserList.length; i++) {
+            if (_chkUserList[i].id == userid) {
+                tree= i;
+                break;
+            }
+        }
+        if(tree!=-1) {
+            //删除选择区域
+            $("#userChecked").children('li').each(function () {
+                if($(this).attr('data-lui-selectid')==userid){
+                    $(this).remove();
+                }
+            });
+            //删除数组
+            _chkUserList.splice(tree, 1);
+
+            $('#lui-id-12').html($('#lui-id-12').attr('basetext')+"("+_chkUserList.length+")");
+
+            //取消选择
+            var treeUser = $.fn.zTree.getZTreeObj("treeUser");
+            if(!treeUser) return;
+            var node =treeUser.getNodeByParam("id", userid, null);
+            if(node!=null)
+                treeUser.checkNode(node, false, false, false);
+
+            var treeUser2 = $.fn.zTree.getZTreeObj("treeUser2");
+            if(!treeUser2) return;
+            var node2 =treeUser2.getNodeByParam("id", userid, null);
+            if(node2!=null)
+                treeUser2.checkNode(node2, false, false, false);
+
+        }
+    }
+    function filterOrg(node,keyword) {
+        return (node.name.indexOf(keyword)>-1);
+    }
+    function setCheckAll() {
+        var treeUser = $.fn.zTree.getZTreeObj("treeUser");
+        if(!treeUser) return;
+        var nodelist =treeUser.getNodes();
+        var chknodelist =treeUser.getCheckedNodes();
+        if(nodelist.length==chknodelist.length&&nodelist.length!=0){
+            $("#selectAll").prop("checked",true);
+        }else{
+            $("#selectAll").prop("checked",false);
+        }
+    }
+    
+    
+    function setCheckAll3() {
+        var treeUser = $.fn.zTree.getZTreeObj("treeUser3");
+        if(!treeUser) return;
+        var nodelist =treeUser.getNodes();
+        var chknodelist =treeUser.getCheckedNodes();
+        if(nodelist.length==chknodelist.length&&nodelist.length!=0){
+            $("#selectAll3").prop("checked",true);
+        }else{
+            $("#selectAll3").prop("checked",false);
+        }
+    }
+
+    function setCheckAllRole() {
+        var treeUser2 = $.fn.zTree.getZTreeObj("treeUser2");
+        if(!treeUser2) return;
+        var nodelist =treeUser2.getNodes();
+        var chknodelist =treeUser2.getCheckedNodes();
+        if(nodelist.length==chknodelist.length&&nodelist.length!=0){
+            $("#selectAll2").prop("checked",true);
+        }else{
+            $("#selectAll2").prop("checked",false);
+        }
+    }
+    function loadOrgTree(){
+        $.ajax({
+            url:_server_url+'/services/flowableGetAPI/getOrgInfo?org_id=1',
+            type:'POST',
+            // dataType:'jsonp',
+            // jsonp:'callback',
+            data:{ORG_ID:'0'},
+            success:function(result){
+                var data= JSON.parse(result);
+                if(data.code=='100'){
+                    var orgNodes=[];
+                    data.rows.forEach(function (item,index,input) {
+                        orgNodes.push({ id:item.ORG_ID, pId:item.P_ORG_ID, name:item.ORG_NM, t:item.ORG_NM});
+                    })
+
+                    $.fn.zTree.init($("#treeOrg"), setting, orgNodes);
+                    $.fn.zTree.init($("#treeOrg2"), setting, orgNodes);
+                    var treeOrg = $.fn.zTree.getZTreeObj("treeOrg");
+                    treeOrg.expandAll(true);
+                    var treeOrg2 = $.fn.zTree.getZTreeObj("treeOrg2");
+                    treeOrg2.expandAll(true);
+                }
+            },
+            error:function(response){
+            }
+        });
+    }
+
+    function loadUser(orgId,userNm){
+
+        var url =_server_url+'/services/flowableGetAPI/getUserInfo';
+        var parm={};
+        if(orgId&&orgId!='') parm.ORG_ID=orgId;
+        if(userNm&&userNm!='') parm.USER_NM=userNm;
+        //parm.USER_NM='张';
+        //var url='http://192.168.11.87:11001/services/flowableGetAPI/getOrgInfo';
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:parm,
+            success:function(result){
+                var data= JSON.parse(result);
+                if(data.code=='100'){
+                    var userNodes=[];
+                    data.rows.forEach(function (item,index,input) {
+                        userNodes.push({ id:item.USER_ID, pId:'', name:item.USER_NM ,t:item.USER_NM});
+                    })
+                    $.fn.zTree.init($("#treeUser"), setting2, userNodes);
+                    var treeUser = $.fn.zTree.getZTreeObj("treeUser");
+                    var nodelist =treeUser.getNodes();
+                    nodelist.forEach(function (item,index,input) {
+                        for(ci in _chkUserList){
+                            if(item.id==_chkUserList[ci].id){
+                                treeUser.checkNode(item, true, false, false);
+                                break;
+                            }
+                        }
+                    });
+                    setCheckAll();
+                }
+            },
+            error:function(response){
+            }
+        });
+    }
+
+    function loadRole(orgId){
+
+        var url =_server_url+'/services/flowableGetAPI/getRoleInfo';
+        var parm={};
+        if(orgId&&orgId!='') parm.ORG_ID=orgId;
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:parm,
+            success:function(result){
+                var data= JSON.parse(result);
+                if(data.code=='100'){
+                    var roleNodes=[];
+                    data.rows.forEach(function (item,index,input) {
+                        roleNodes.push({ id:item.ROLE_ID, pId:'', name:item.ROLE_NM ,t:item.ROLE_NM});
+                    })
+                    $.fn.zTree.init($("#treeRole"), setting, roleNodes);
+                    $.fn.zTree.init($("#treeUser2"), setting2, null);
+                }
+            },
+            error:function(response){
+            }
+        });
+    }
+
+    function loadUserByRole(orgId,roleId){
+
+        var url =_server_url+'/services/flowableGetAPI/getRoleAndUserInfo';
+        var parm={};
+        if(orgId&&orgId!='') parm.ORG_ID=orgId;
+        if(roleId&&roleId!='') parm.ROLE_ID=roleId;
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:parm,
+            success:function(result){
+                var data= JSON.parse(result);
+                if(data.code=='100'){
+                    var userNodes=[];
+                    data.rows.forEach(function (item,index,input) {
+                        userNodes.push({ id:item.USER_ID, pId:'', name:item.USER_NM ,t:item.USER_NM});
+                    })
+                    $.fn.zTree.init($("#treeUser2"), setting2, userNodes);
+                    var treeUser2 = $.fn.zTree.getZTreeObj("treeUser2");
+                    var nodelist =treeUser2.getNodes();
+                    nodelist.forEach(function (item,index,input) {
+                        for(ci in _chkUserList){
+                            if(item.id==_chkUserList[ci].id){
+                                treeUser2.checkNode(item, true, false, false);
+                                break;
+                            }
+                        }
+                    });
+                    setCheckAllRole();
+                }
+            },
+            error:function(response){
+            }
+        });
+    }
+    
+    
+    
+    
+    
+	 function loadHisUser(processId, currentUserId){
+		  var processId = $('#processDefinitionId', parent.document).val();
+		  var currentUserId = $('#userId', parent.document).val();
+		  var param={};
+		  param.processId=processId;
+		  param.currentUserId=currentUserId;
+	        $.ajax({
+	            url:'/ext/getHisUserList',
+	            data: param,
+	            type:'POST',
+	            success:function(data){
+	            	 var userNodes=[];
+	                    data.forEach(function (item,index,input) {
+	                        userNodes.push({ id:item.userId, pId:'', name:item.userNm ,t:item.userNm});
+	                    }) ;
+	                    
+	                    $.fn.zTree.init($("#treeUser3"), setting2, userNodes);
+	                    var treeUser3 = $.fn.zTree.getZTreeObj("treeUser3");
+	                    var nodelist =treeUser3.getNodes();
+	                    nodelist.forEach(function (item,index,input) {
+	                        for(ci in _chkUserList){
+	                            if(item.id==_chkUserList[ci].id){
+	                                treeUser3.checkNode(item, true, false, false);
+	                                break;
+	                            }
+	                        }
+	                    });
+	                    
+	                    setCheckAll3();
+	            	 
+	            },
+	            error:function(response){
+	            }
+	        });
+	        
+	        
+	       
+	    }
+
+
+    var checknum;
+    $(document).ready(function() {
+        checknum = GetQueryString('s');
+
+        $("#content > div").hide(); // Initially hide all content
+        $("#tabs li:first").attr("id","current"); // Activate first tab
+        $("#content div:first").fadeIn(); // Show first tab content
+
+        $('#tabs a').click(function(e) {
+            e.preventDefault();
+            $("#content>div").hide(); //Hide all content
+            $("#tabs li").attr("id",""); //Reset id's
+            $(this).parent().attr("id","current"); // Activate this
+            $('#' + $(this).attr('title')).fadeIn(); // Show content for current tab
+       		 var tabId = $(this).attr('title');
+		 	if(tabId=='tab3'){
+			    loadHisUser(1,2);
+		     }
+        });
+        //$.fn.zTree.init($("#treeOrg"), setting, zNodes);
+        //$.fn.zTree.init($("#treeUser"), setting2, zNodes2);
+
+        $("ul.lui-address-selectedbox-ul").delegate("li","mouseenter",function(){
+            $(this).children("div").first().css('display','block');
+        });
+        $("ul.lui-address-selectedbox-ul").delegate("li","mouseleave",function(){
+            $(this).children("div").first().css('display','none');
+        });
+
+        //删除选择人员
+        $("ul.lui-address-selectedbox-ul").delegate(".lui-address-selectedbox-del","click",function(){
+            _chkUserList.deluser($(this).parent().attr('data-lui-selectid'));
+            setCheckAll();
+            setCheckAllRole();
+        });
+
+        //清空选择人员
+        $(".lui-address-selectedbox-delall").click(function(e) {
+            for (var i = _chkUserList.length-1; i >= 0; i--) {
+                _chkUserList.deluser(_chkUserList[i].id);
+            }
+            setCheckAll();
+            setCheckAllRole();
+        });
+
+        //组织机构链接点击
+        $("ul.lui-address-panel-nav-ul").delegate("li.lui-address-panel-nav-li","click",function(){
+            var orgid =$(this).attr('data-lui-selectid');
+            var treeOrg = $.fn.zTree.getZTreeObj("treeOrg");
+            var node =treeOrg.getNodeByParam("id", orgid, null);
+            if(node!=null){
+                treeOrg.selectNode(node,false,true);
+                creatOrgli(node);
+                loadUser(node.id,'');
+            }
+        });
+
+        //组织结构查询
+        $(".lui-address-quciklocate-searchbar .lui-form-control").bind('input propertychange',function(e) {
+            var keyword= $(this).val();
+            var treeOrg = $.fn.zTree.getZTreeObj("treeOrg");
+            if(!treeOrg) return;
+            var node = treeOrg.getNodesByFilter(filterOrg, true,null,keyword); // 仅查找一个节点
+            if(node!=null){
+                treeOrg.selectNode(node,false,true);
+                creatOrgli(node);
+                loadUser(node.id,'');
+            }
+        });
+
+        //人员查询
+        $(".lui-address-nav-searchbar .lui-form-control").bind('input propertychange',function(e) {
+            var keyword= $(this).val();
+            //刷新人员
+            if(keyword!=''){
+                loadUser('',keyword);
+            }else{
+                var treeOrg = $.fn.zTree.getZTreeObj("treeOrg");
+                var nodes = treeOrg.getSelectedNodes();
+                if(nodes.length==1) loadUser(nodes[0].id,'');
+            }
+        });
+
+        //全选
+        $("#selectAll").bind('change',function (e) {
+
+            var treeUser = $.fn.zTree.getZTreeObj("treeUser");
+            if(!treeUser) return;
+            var nodelist =treeUser.getNodes();
+            let allcheck =$("#selectAll")[0].checked;
+            nodelist.forEach(function (item,index,input) {
+                if(item.checked!=allcheck){
+                    treeUser.checkNode(item, allcheck, false, false);
+                    if(allcheck){
+                        _chkUserList.adduser(item);
+                    }else{
+                        _chkUserList.deluser(item.id);
+                    }
+                }
+            });
+        });
+        $("#selectAll2").bind('change',function (e) {
+
+            var treeUser2 = $.fn.zTree.getZTreeObj("treeUser2");
+            if(!treeUser2) return;
+            var nodelist =treeUser2.getNodes();
+            let allcheck =$("#selectAll2")[0].checked;
+            nodelist.forEach(function (item,index,input) {
+                if(item.checked!=allcheck){
+                    treeUser2.checkNode(item, allcheck, false, false);
+                    if(allcheck){
+                        _chkUserList.adduser(item);
+                    }else{
+                        _chkUserList.deluser(item.id);
+                    }
+                }
+            });
+        });
+        
+        
+        
+    	$("#selectAll3").bind('change',function (e) {
+            var treeUser3 = $.fn.zTree.getZTreeObj("treeUser3");
+            if(!treeUser3) return;
+            var nodelist =treeUser3.getNodes();
+            let allcheck =$("#selectAll3")[0].checked;
+            nodelist.forEach(function (item,index,input) {
+                if(item.checked!=allcheck){
+                    treeUser3.checkNode(item, allcheck, false, false);
+                    if(allcheck){
+                        _chkUserList.adduser(item);
+                    }else{
+                        _chkUserList.deluser(item.id);
+                    }
+                }
+            });
+        });
+
+
+        //确认
+        $('#btn_ok').click(function(e) {
+            var rstlist=[];
+            if(checknum&&_chkUserList.length>checknum){
+                alert('请选择'+checknum+'名人员！');
+                return;
+            }
+            for (var i = 0; i < _chkUserList.length; i++) {
+                rstlist.push({id:_chkUserList[i].id,name:_chkUserList[i].name});
+            }
+            parent.setLayerRst(rstlist);
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            parent.layer.close(index);
+        });
+
+        //取消
+        $('#btn_cancel').click(function(e) {
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            parent.layer.close(index);
+        });
+        loadOrgTree();
+    });
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null) return unescape(r[2]);
+        return null;
+    }
+      var _server_url='http://workflow.pdm.cmdrawin.com:38082';//正式
+      //var _server_url='http://192.168.11.87:11001'; //测试
+     //var _server_url='http://192.168.11.87:11001';  //90
+     // var _server_url='http://192.168.11.86:38082';  //86
+     //接口实现
+     //\pms-parent\pbims-server\pbims-server-system-webprovider\src\main\java\com\cmdrawin\pbims\restful\flowable\FlowableGetBusDataAPIRestfulService.java
+
+ </script>
+</body>
+</html>

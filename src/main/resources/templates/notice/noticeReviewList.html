@@ -39,10 +39,10 @@
 
     <!-- bootstrap-table JavaScript -->
     <script src="/vendors/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
+    <script src="/vendors/bower_components/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
 
     <script type="text/javascript" src="/js/ext/ext-all.js"></script>
     <script src="/myjs/notice.js"></script>
-    <script src="/myjs/userSelect.js"></script>
 
     <style type="text/css">
         thead tr th {
@@ -53,30 +53,67 @@
 </head>
 
 <body id="ext-element-1" class="x-body x-webkit x-chrome x-desktop x-scroller" style="overflow: hidden;">
+    <!--Preloader-->
+    <div class="preloader-it">
+        <div class="la-anim-1"></div>
+    </div>
+    <!--/Preloader-->
+
     <div style="min-height: 900px;background: #FFF;">
         <div class="container-fluid">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px">
                 <div class="panel panel-default card-view">
-                    <div class="col-sm-12">
-                        <form role="form-horizontal" id="noticeForm2">
-                            <div class="form-group mt-15">
+
+                    <div class="panel-wrapper collapse in">
+                        <div class="panel-body">
+                            <div class="table-wrap ">
+                                <div class="table-responsive" style="padding:5px">
+                                    <table id="table_review" data-locale="zh-CN"
+                                        class="table table-striped table-bordered table-condensed display compact">
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- bootstrap 审核模态框 -->
+    <div class="modal fade bs-example-modal-lg" id="myModal_Review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        审核公告
+                    </h4>
+                </div>
+                <div class="modal-body mb-10">
+                    <form role="form-horizontal" id="noticeForm2">
+                        <fieldset disabled>
+                            <div class="form-group">
                                 <label for="noticeTopic" class="col-sm-3 control-label mb-5"
                                     style="font-weight:bold">通知主题:</label>
                                 <input type="text" class="form-control input-sm" name="noticeTopic" id="noticeTopic2"
                                     placeholder="请输入主题">
                             </div>
-                            <div class="form-group mt-15">
+                            <div class="form-group">
                                 <label for="txt-body" class="col-sm-12 control-label mb-5"
                                     style="font-weight:bold">通知内容:</label>
-                                <textarea style="width: 100%" rows="18" id="txt-body2" name="noticeBody"></textarea>
+                                <textarea style="width: 100%" rows="12" id="txt-body2" name="noticeBody"></textarea>
                             </div>
-                            <div class="form-group mt-15">
-                                <label for="noticeType" class="col-sm-1 control-label"
+                            <div class="form-group">
+                                <label for="noticeType" class="col-sm-3 control-label"
                                     style="font-weight:bold">通知类型:</label>
                                 <div>
                                     <label class="radio-inline ">
                                         <input type="radio" name="noticeType" id="2optionsRadios1" value="会议通知"
-                                            checked>会议通知
+                                            >会议通知
                                     </label>
                                     <label class="radio-inline">
                                         <input type="radio" name="noticeType" id="2optionsRadios2" value="培训通知">
@@ -92,12 +129,12 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group mt-15">
-                                <label for="noticeLevel" class="col-sm-1 control-label"
+                            <div class="form-group">
+                                <label for="noticeLevel" class="col-sm-3 control-label"
                                     style="font-weight:bold">重要等级:</label>
                                 <div>
                                     <label class="radio-inline ">
-                                        <input type="radio" name="noticeLevel" id="2optionsRadios1" value="一般" checked>
+                                        <input type="radio" name="noticeLevel" id="2optionsRadios1" value="一般" >
                                         一般
                                     </label>
                                     <label class="radio-inline">
@@ -110,41 +147,27 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group mt-15">
-                                <label class="col-sm-1 control-label" for="reviewer"
-                                    style="font-weight:bold">审核人:</label>
-                                <div class="col-sm-3">
-                                    <select class="form-control input-sm " id="reviewer" name="reviewer">
-                                        <option>易小红</option>
-                                        <option>谢志成</option>
-                                        <option>张贤超</option>
-                                        <option>周龙</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group mt-15">
-                                <label for="userChoose" class="col-sm-12 control-label mb-5"
-                                    style="font-weight:bold">抄送:</label>
-                                <input type="text" class="form-control input-sm" name="userChoose" id="userChoose"
-                                    placeholder="双击选择" ondblclick="openUserChoose()">
-                            </div>
-                            <div class="form-group mt-15" style="display: none">
-                                <input type="text" class="form-control" name="publisher" th:value="${userName}">
-                            </div>
-                            <div class="form-group mt-15">
-                                <button type="submit" class="btn  btn-success mr-15 " style="float: right"
-                                    onclick="noticeInfoSubmit()">发布</button>
-                            </div>
-
-                        </form>
-                    </div>
+                        </fieldset>
+                        <HR>
+                        <div class="form-group ">
+                            <label for="noticeTopic" class="col-sm-3 control-label mb-5"
+                                style="font-weight:bold">备注</label>
+                            <input type="text" class="form-control col-sm-9 input-sm mb-25" name="remark" id="remark"
+                                placeholder="若驳回，请填写备注说明原因！">
+                        </div>
+                        <div class="form-group" style="display: none">
+                            <input type="text" class="form-control" name="reviewer" id="reviewer" th:value="${userName}">
+                            <input type="hidden" id="id" value="">
+                        </div>
+                    </form>
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button class="btn  btn-success mr-15 " style="float: right" onclick="reviewOK()">同意</button>
+                    <button class="btn btn-warning mr-15 " style="float: right" onclick="reviewNG()">驳回</button>
+                </div>
+            </div><!-- /.modal-content -->
         </div>
     </div>
-    </div>
-
-
     <!-- JavaScript -->
     <!-- Bootstrap Core JavaScript -->
     <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -158,6 +181,7 @@
 
     <!-- Init JavaScript -->
     <script src="/dist/js/init.js"></script>
+
 
 </body>
 
